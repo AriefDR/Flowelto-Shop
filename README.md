@@ -1,79 +1,69 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-"# Flowelto-Shop" 
+Flowelto Shop
+Flowelto Shop is a famous flower shop in Indonesia made by a famous computer science student from Canada. To expand its business, Flowelto Shop wants to create a website for their shop. In that website, people can find information about the Flowelto Shop’s products and order it. This website enables the customers to know what inside Flowelto Shop is.
+As a web developer, you are asked to create a website using Laravel 7 for this online shop. There are three types of user’s role in this website: Manager (Admin), Customer, and Guest (non-logged-in user).
+Each page shows greeting to user, and current date time. The descriptions for each page are:
+1.	Login
+This page allows user to log in to the website. Display an error message on the login page if user enters wrong combination of Email and Password.
+If user has entered correct Username and Password, the page will be redirected to the Home Page for customer or Manager based on the user’s role and there will be cookie for 7 days
+2.	Register
+This page allows guests to register themselves as Flowelto Shop customer. Display an error message if user input incorrect personal data. The following table shows the existing fields on this page and the validation for each field:
+Username	Must be filled with minimum 5 characters
+Email Address	Must be filled with email validation and unique
+Password	Must be filled with minimum 8 characters length
+Confirm Password	Must be filled and same with password
+Address	Must be filled and minimum 10 characters length
+Gender	Must be selected
+Date of Birth	Must be filled 
+3.	Home
+This page allows user to see all Flowelto Shop categories. This page allows user to go to Flowelto Shop menu if user click the picture. This page is accessible for all users. In this page User can also pick the Flowelto Shop categories at Categories drop down menu in the navbar. 
+In this page, guest can Login or Register. For all the logged-in user, you can Change Password at the Account drop down menu in the navbar.
+For Manager, you can Add Flower and Manage Categories at the Account drop down menu in the navbar.
+For Customers (logged-in user), they can access My Cart page and Transaction History page at the Account drop down menu in the navbar.
+4.	View Product 
+This page is accessible for all users. This page shows all Flowelto Shop’s menu based on its Categories. For Manager, this page can also be used to update or delete each flower. This page also includes pagination to display 8 items in per page and search field to search Flowelto Shop’s menu by ‘Name’ and ‘Price’. This page displays Flower’s image, name, and price. 
+As for customer, each flower can be clicked to redirect into “Flower’s Detail Page”.
+Each product in the lists have ‘Delete Flower’ and ‘Update Flower’ buttons:
+-	If Manager click Delete Flower button, delete selected product
+-	If Manager click Update Flower button, it will redirect them to Update Flower page
+5.	Update Product
+This page is only accessible for Manager. Manager can see all details of Flower’s they have choose and then they can update the flower by clicking “Update Flower” button on “View Flower” pages. When they click the button, it will redirect them to “Update Flower” page. 
+In “Update Flower” page, it will show all the data of the flower and its description. The following table shows existing fields in the page and the validation for each field: 
+Category	Must be selected 
+Flower Name	Must be filled, unique, and minimum 5 characters length
+Flower Price	Must be filled with integer format and must be more or equals 50000
+Description	Must be filled and minimum 20 characters length
+Flower Image	Can be Filled or not
+6.	Flower Details Page
+This page allows all users to see details of each flowers. There is also a “Add to Cart” button. Validate the button to only appear for Guest and Customer, then validate if Guest click “Add to Cart” button, they will redirect to Login Page. In this page, there will be a text field for inputting quantity of the flower you want to purchase. There will be an error message if user input a quantity below 1.
+7.	Add Flower
+This page will allow Manager to add new flower, this page can be accessed when Manager choose “Add Flower” Button at Account drop down menu in the navbar. 
+The following table shows existing fields in the page and the validation for each field:
+Category	Must be selected 
+Flower Name	Must be filled, unique, and minimum 5 characters length
+Flower Price	Must be filled with integer format and must be more or equals 50000
+Description	Must be filled and minimum 20 characters length
+Flower Image	Must be filled
+If Manager click add button, it will redirect back to this page, but if there are errors, there will be an error message
+8.	Manage Categories
+This page is accessible only for Manager. This page shows all Flower Shop’s categories. First, insert the categories image and name to the database using seeder. This page must also display the categories image and categories name.
+Each product in the lists have ‘Update Category’ and ‘Delete Category’ buttons:
+-	If Manager click Delete Category button, delete all products with selected category
+-	If Manager click Update Category button, will be redirect to Category Details Page
+9.	Update Category
+This page allows Manager to update existing Category. This page will be shown if Manager clicks Update Category button in Manage Categories page. Display an error message if Manager input incorrect Flower category data. 
+The following table shows existing fields in the page and the validation for each field:
+Category Name	Must be filled, unique, and minimum 5 characters length
+Category Image	Can be filled or not
+If Manager click Update button, then update current selected Flower with updated data. After that, redirect back to this page.
+10.	My Cart
+This page is accessible for customers to show customer’s cart. In this page, users can see all their items in the cart. There will be 2 Buttons: Update Button and Check Out Button. When users click Update Buttons, it will be used to update its item quantity (quantity must not below 0), if the customer update quantity to 0, then it will delete the selected items from the cart, and if the checkout buttons get clicked it will delete all items and those items will be inserted to Transaction History.
+The item information that will displayed are flower image, flower name, subtotal (price x quantity) and quantity.
+11.	Transaction History
+This page is accessible for customers to show transaction history. The Transaction History display will be sorted by the newest Transaction. If the customer clicks a transaction history, it will redirect to selected Transaction History Detail Page.
+12.	Transaction History Detail
+This page will show the transaction history detail from the selected transaction history at Transaction History Page. The information that must be displayed are flower image, flower name, subtotal (price x quantity) and quantity. At the bottom of transaction history detail, there will be Total Price of the transaction history.
+13.	Change Password
+All Customer and Manager can Change their password in this page. The following table shows the existing fields on this page and the validation for each field:
+Your Password	Must be same with the current password
+New Password	Must be filled with minimum 8 characters length
+Confirm Password	Must be filled and same with password
