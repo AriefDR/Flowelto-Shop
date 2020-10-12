@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRelationImgFlowerFlowersTable extends Migration
+class CreateImgFlowersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateRelationImgFlowerFlowersTable extends Migration
      */
     public function up()
     {
-        Schema::create('relation_imgFlower_flowers', function (Blueprint $table) {
-            $table->id();
+        Schema::create('img_flowers', function (Blueprint $table) {
+            $table->increments('id_img_flower');
+            $table->string('img_flower');
             $table->unsignedInteger('flower_id');
-            $table->unsignedInteger('img_flower_id');
 
             $table->foreign('flower_id')->references('id_flower')->on('flowers');
-            $table->foreign('img_flower_id')->references('id_img_flower')->on('img_flowers');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateRelationImgFlowerFlowersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('relation_imgFlower_flowers');
+        Schema::dropIfExists('img_flowers');
     }
 }
