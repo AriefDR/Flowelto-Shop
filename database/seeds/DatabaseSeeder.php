@@ -15,14 +15,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UsersTableSeeder::class,
             CategoryFlowersTableSeeder::class,
-            ImgFlowersTableSeeder::class,
+            ManagerTableSeeder::class,
             FlowersTableSeeder::class,
+            ImgFlowersTableSeeder::class,
             TypePaymentsTableSeeder::class,
             TransactionsTableSeeder::class,
             DetailTransactionsTableSeeder::class,
             AddressTableSeeder::class,
-            RelationCategoryFlowersTableSeeder::class,
-            RelationImgFlowerFlowersTableSeeder::class
+            RelationCategoryFlowersTableSeeder::class
         ]);
     }
 }

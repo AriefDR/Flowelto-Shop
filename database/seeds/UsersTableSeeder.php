@@ -13,12 +13,12 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'username' => 'arief dwi rachmadian',
-                'email' => 'arief@gmail.com',
+                'username' => 'ryanda kusuma',
+                'email' => 'ryanda@gmail.com',
                 'password' => Hash::make('password'),
                 'gender' => 'male',
-                'dob' => '1992-02-12',
-                'phone_number' => '08125148749',
+                'dob' => '1999-12-12',
+                'phone_number' => '08127178349',
                 'remember_token' => Hash::make('token'),
                 'created_at' => '2020-10-4 11:00:00'
             ],
