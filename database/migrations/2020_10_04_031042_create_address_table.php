@@ -18,7 +18,7 @@ class CreateAddressTable extends Migration
             $table->string('address',100);
             $table->unsignedInteger('user_id');
 
-            $table->foreign('user_id')->references('id_user')->on('users');
+            $table->foreign('user_id')->references('id_user')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

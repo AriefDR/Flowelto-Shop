@@ -18,8 +18,8 @@ class CreateRelationCategoryFlowersTable extends Migration
             $table->unsignedInteger('flower_id');
             $table->unsignedInteger('category_id');
 
-            $table->foreign('flower_id')->references('id_flower')->on('flowers');
-            $table->foreign('category_id')->references('id_category')->on('category_flowers');
+            $table->foreign('flower_id')->references('id_flower')->on('flowers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('category_id')->references('id_category')->on('category_flowers')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

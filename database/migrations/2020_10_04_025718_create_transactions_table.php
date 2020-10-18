@@ -20,8 +20,8 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('payment_id');
 
-            $table->foreign('user_id')->references('id_user')->on('users');
-            $table->foreign('payment_id')->references('id_payment')->on('type_payments');
+            $table->foreign('user_id')->references('id_user')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('payment_id')->references('id_payment')->on('type_payments')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

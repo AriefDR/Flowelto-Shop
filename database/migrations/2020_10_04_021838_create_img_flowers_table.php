@@ -18,7 +18,7 @@ class CreateImgFlowersTable extends Migration
             $table->string('img_flower');
             $table->unsignedInteger('flower_id');
 
-            $table->foreign('flower_id')->references('id_flower')->on('flowers');
+            $table->foreign('flower_id')->references('id_flower')->on('flowers')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

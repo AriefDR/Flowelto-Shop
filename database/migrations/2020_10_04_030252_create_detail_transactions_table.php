@@ -19,8 +19,8 @@ class CreateDetailTransactionsTable extends Migration
             $table->bigInteger('sub_price');
             $table->unsignedInteger('flower_id');
 
-            $table->foreign('flower_id')->references('id_flower')->on('flowers');
-            $table->foreign('id_transaction')->references('id_transaction')->on('transactions');
+            $table->foreign('flower_id')->references('id_flower')->on('flowers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_transaction')->references('id_transaction')->on('transactions')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
