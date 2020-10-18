@@ -18,9 +18,7 @@ class CreateFlowersTable extends Migration
             $table->string('flower_name');
             $table->text('flower_description');
             $table->bigInteger('flower_price');
-            $table->unsignedInteger('manager_id');
 
-            $table->foreign('manager_id')->references('id_manager')->on('manager')->onupdate('cascade')->ondelete('cascade');
             $table->timestamps();
         });
     }
