@@ -14,10 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
+<<<<<<< HEAD
 Route::get('/manager/home',function() {
     return view('managerView.homeManager');
 });
 
+=======
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+>>>>>>> ae7402a1229a5cf3dbaba646ddd5ed20ddef6f20
