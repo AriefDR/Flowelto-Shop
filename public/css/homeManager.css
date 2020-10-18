@@ -83,7 +83,7 @@
 }
 
 /* carusel */
-@media (min-width: 768px) {
+@media (min-width: 78px) {
 
     /* show 3 items */
     .carousel-inner .active,

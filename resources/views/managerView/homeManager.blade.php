@@ -1,4 +1,4 @@
-@extends('layouts.layoutManager')
+@extends('layout.layoutManager')
 @section('title','Welcome Home | Manager ')
 @section('css')
     @parent
