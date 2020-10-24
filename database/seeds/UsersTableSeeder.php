@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -17,57 +16,52 @@ class UsersTableSeeder extends Seeder
             [
                 'username' => 'arief dr',
                 'email' => 'arief@gmail.com',
-                'password' => Hash::make(123123),
+                'password' => bcrypt(123123123),
                 'gender' => 'male',
                 'dob' => '1999-12-12',
                 'phone_number' => '08127178349',
-                'remember_token' => Hash::make('token'),
                 'created_at' => '2020-10-4 11:00:00',
                 'role' => 'manager'
             ],
             [
                 'username' => 'febio irsadad',
                 'email' => 'febio@gmail.com',
-                'password' => Hash::make('password'),
+                'password' => bcrypt(123123123),
                 'gender' => 'male',
                 'dob' => '2000-08-09',
                 'phone_number' => '08982276451',
-                'remember_token' => Hash::make('token'),
                 'created_at' => '2020-10-4 11:00:00',
                 'role' => 'manager'
             ],
             [
                 'username' => 'dameria octaviani',
                 'email' => 'dame@gmail.com',
-                'password' => Hash::make('password'),
+                'password' => bcrypt(123123123),
                 'gender' => 'female',
                 'dob' => '1998-12-22',
                 'phone_number' => '081237284756',
-                'remember_token' => Hash::make('token'),
                 'created_at' => '2020-10-4 11:20:00',
-                'role' => 'manager'
+                'role' => 'user'
             ],
             [
                 'username' => 'david setiawan',
                 'email' => 'david@gmail.com',
-                'password' => Hash::make('password'),
+                'password' => bcrypt(123123123),
                 'gender' => 'male',
                 'dob' => '2000-12-02',
                 'phone_number' => '086254324182',
-                'remember_token' => Hash::make('token'),
                 'created_at' => '2020-10-4 11:30:00',
-                'role' => 'manager'
+                'role' => 'user'
             ],
             [
                 'username' => 'hellen clasrisa',
                 'email' => 'helen@gmail.com',
-                'password' => Hash::make('password'),
+                'password' => bcrypt(123123123),
                 'gender' => 'female',
                 'dob' => '2000-10-11',
                 'phone_number' => '081223556784',
-                'remember_token' => Hash::make('token'),
                 'created_at' => '2020-10-4 11:35:00',
-                'role' => 'manager'
+                'role' => 'user'
             ]
         ]);
     }

@@ -21,14 +21,22 @@ button {
     <div class="container">
         <h4 class="text-center">LOGIN</h4>
         <hr>
-        <form>
+        @if($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{$errors->first()}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        @endif
+        <form action="{{route('login')}}" method="POST">
             <div class="form-group">
-                <label>Username</label>
+                <label>Email</label>
                 <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"> <i class="fas fa-user"></i> </div>
-                </div>
-                <input type="text" name="" class="form-control" placeholder="Masukan Username Anda">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"> <i class="fas fa-user"></i> </div>
+                    </div>
+                <input type="text" name="email" class="form-control" placeholder="Masukan email" autofocus>
                 </div>
             </div>
             <div class="form-group">
@@ -37,11 +45,11 @@ button {
                 <div class="input-group-prepend">
                     <div class="input-group-text"> <i class="fas fa-unlock-alt"></i> </div>
                 </div>
-                <input type="password" name="" class="form-control" placeholder="Masukan Password Anda">
+                <input type="password" name="password" class="form-control" placeholder="Masukan Password Anda" autofocus>
                 </div>
+                @csrf
             </div>
             <button type="submit" class="btn btn-primary">SUBMIT</button>
-            <button type="reset" class="btn btn-danger">RESET</button>
         </form>
     </div>
 @endsection

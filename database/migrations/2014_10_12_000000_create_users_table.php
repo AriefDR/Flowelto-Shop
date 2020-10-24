@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->date('dob');
             $table->bigInteger('phone_number');
-            $table->enum('role',['manager','user'])->default('user');
+            $table->enum('role',['user','manager'])->default('user');
 
             $table->rememberToken();
             $table->timestamps();

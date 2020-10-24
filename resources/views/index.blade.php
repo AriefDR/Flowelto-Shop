@@ -112,7 +112,7 @@
           </div>
         </div>
       </div>
-      
+
       <br><br>
       <div class="text-center">
         <button type="button" class="btn btn-info btn-lg text-white">VIEW ALL NEW PRODUCTS</button>
@@ -182,7 +182,7 @@
           </div>
         </div>
       </div>
-      
+
       <br><br>
       <div class="text-center">
         <button type="button" class="btn btn-info btn-lg text-white">VIEW ALL FRESH FLOWERS</button>
@@ -199,7 +199,7 @@
           <p>It is perhaps the most used and successful form of communicating your feelings to those you care about. At Flowelto Shop, we realize the worth of your emotions which is what makes us the number one choice for sending out your love to dear ones. Be it a happy occasion or a sad one. Flowelto Shop is just a click away.</p>
           <p>A good life is a collection of happy moments. Let’s create your happy moments with us.</p>
         </div>
-        <div class="col-sm-6">    
+        <div class="col-sm-6">
             <img src="/img/madame.jpg" alt="">
         </div>
       </div>

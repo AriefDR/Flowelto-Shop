@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,23 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', 'UserController@getHome')->name('home');
+
+Route::middleware('guest')->group(function () {
+    Route::get('/register', 'AuthController@getRegister')->name('register');
+    Route::post('/register', 'AuthController@postRegister');
+
+    Route::get('/login', 'AuthController@getLogin')->name('login');
+    Route::post('/login', 'AuthController@postLogin');
+});
+Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth.basic');
+
+Route::prefix('manager')->middleware('role:manager')->group(function () {
+    Route::get('home', 'ManagerController@getHome')->name('homeManager');
 });
 
-Route::get('/manager/home',function() {
-    return view('managerView.homeManager');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('/register', function () {
-    return view('register');
-});
-
+// Route::group(['middleware' => 'role:user'], function () {
+//     Route::get('/', 'UserController@getHome')->name('home');
+// });

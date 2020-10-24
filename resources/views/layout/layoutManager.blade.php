@@ -92,10 +92,9 @@
             </div>
           </li>
           <li>
-            <a href="#">
-                <i class="fa fa-tachometer-alt"></i>
-              <span>Documentation</span>
-              <span class="badge badge-pill badge-primary">Beta</span>
+          <a href="{{route('logout')}}">
+                <i class="fas fa-power-off"></i>
+              <span>Log Out</span>
             </a>
           </li>
         </ul>

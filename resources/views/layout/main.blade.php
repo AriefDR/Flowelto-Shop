@@ -87,20 +87,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mr-4">
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="/">HOME <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="/product" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SHOP </a>
+                <a class="nav-link dropdown-toggle text-white" href="/product" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">FRESH FLOWERS</a>
+                    <a class="dropdown-item" href="#">Fresh Flowers</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">FEATURED FLOWERS</a>
+                    <a class="dropdown-item" href="#">Featured Flowers</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">VIEW ALL CATEGORIES</a>
+                    <a class="dropdown-item" href="#">View All Categories</a>
                 </div>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="/about">ABOUT US <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/about">About Us <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -108,12 +108,27 @@
                 <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
             </form>
             <ul class="navbar-nav ml-2">
+                @if(!Auth::check())
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="/login">LOGIN <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/login">Login <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="/register">REGISTER <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/register">Register <span class="sr-only">(current)</span></a>
                 </li>
+                @else
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="/product" id="drProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{strtoupper(Auth::user()->role)}}</a>
+                    <div class="dropdown-menu" aria-labelledby="drProfile">
+                        <a class="dropdown-item" href="#">MyChart</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Transaction History</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Change Password</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                    </div>
+                    </li>
+                @endif
             </ul>
             <div id="date" class="text-white ml-2"></div>
                 <script>
