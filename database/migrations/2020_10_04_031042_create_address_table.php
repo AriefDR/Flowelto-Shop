@@ -14,11 +14,11 @@ class CreateAddressTable extends Migration
     public function up()
     {
         Schema::create('address', function (Blueprint $table) {
-            $table->increments('id_address');
-            $table->string('address',100);
+            $table->increments('id');
+            $table->string('address', 100);
             $table->unsignedInteger('user_id');
 
-            $table->foreign('user_id')->references('id_user')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

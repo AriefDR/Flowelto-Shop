@@ -10,6 +10,7 @@
     @section('css')
     <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/sidebarManager.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/homeManager.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     @show
 
@@ -30,13 +31,13 @@
       </div>
       <div class="sidebar-header">
         <div class="user-pic">
-          <img class="img-responsive img-rounded" src=""
+        <img class="img-responsive img-rounded" src="{{asset('/img/user.jpg')}}"
             alt="User picture">
         </div>
         <div class="user-info">
-          <span class="user-name">Arief Dr
+          <span class="user-name">{{ Auth::user()->username }}
           </span>
-          <span class="user-role">Manager</span>
+          <span class="user-role">{{ Auth::user()->role }}</span>
           <span class="user-status">
             <i class="fa fa-circle"></i>
             <span>Online</span>
@@ -63,30 +64,43 @@
             <span>General</span>
           </li>
           <li>
-            <a href="#">
+          <a href="{{route('homeManager')}}">
                 <i class="fa fa-tachometer-alt"></i>
               <span>Dashboard</span>
-              <span class="badge badge-pill badge-primary">Beta</span>
             </a>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>E-commerce</span>
-              <span class="badge badge-pill badge-danger">3</span>
+                <i class="fas fa-seedling"></i>
+              <span>Flowers</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Products
+                <a href="{{route('flower.create')}}">Add Flowers
 
                   </a>
                 </li>
                 <li>
-                  <a href="#">Orders</a>
+                  <a href="{{route('flower.index')}}">Show Flowers</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+                <i class="fab fa-buffer"></i>
+              <span>Categories</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Add Categories
+
+                  </a>
                 </li>
                 <li>
-                  <a href="#">Credit cart</a>
+                  <a href="#">Show Categories</a>
                 </li>
               </ul>
             </div>
@@ -131,6 +145,7 @@
     <script src="{{asset('/js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('/js/sidebarManager.js')}}"></script>
+    <script src="{{asset('/js/homeManager.js')}}"></script>
     @show
 </body>
 

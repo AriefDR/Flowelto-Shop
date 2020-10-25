@@ -23,12 +23,15 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', 'AuthController@getLogin')->name('login');
     Route::post('/login', 'AuthController@postLogin');
 });
-Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth.basic');
+Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth');
 
 Route::prefix('manager')->middleware('role:manager')->group(function () {
     Route::get('home', 'ManagerController@getHome')->name('homeManager');
+
+    Route::get('flower', 'FlowerController@index')->name('flower.index');
+    Route::get('flower/create', 'FlowerController@create')->name('flower.create');
+    Route::post('flower/create', 'FlowerController@store')->name('flower.store');
 });
 
-// Route::group(['middleware' => 'role:user'], function () {
-//     Route::get('/', 'UserController@getHome')->name('home');
-// });
+Route::group(['middleware' => 'role:user'], function () {
+});

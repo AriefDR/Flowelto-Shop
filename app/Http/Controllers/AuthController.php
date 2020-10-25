@@ -54,7 +54,6 @@ class AuthController extends Controller
         $user->dob = $request->dob;
         $user->phone_number = $request->phone;
         $user->role = "user";
-        $user->remember_token = csrf_field();
         $user->save();
 
         $adrs = new Address;
@@ -62,12 +61,12 @@ class AuthController extends Controller
         $user->address()->save($adrs);
         $adrs->save();
 
-        return redirect()->route('login')->with("success-regis", "Register berhasil");
+        return redirect()->route('login');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect()->route('login');
     }
 }

@@ -12,6 +12,6 @@ class Address extends Model
     protected $primaryKey = "id_address";
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

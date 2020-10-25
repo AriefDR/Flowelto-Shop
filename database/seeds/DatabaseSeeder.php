@@ -16,12 +16,10 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             CategoryFlowersTableSeeder::class,
             FlowersTableSeeder::class,
-            ImgFlowersTableSeeder::class,
             TypePaymentsTableSeeder::class,
             TransactionsTableSeeder::class,
             DetailTransactionsTableSeeder::class,
-            AddressTableSeeder::class,
-            RelationCategoryFlowersTableSeeder::class
+            AddressTableSeeder::class
         ]);
     }
 }

@@ -1,10 +1,10 @@
-.customhr {
+.nwFlower {
     border-top: 1px solid #8c8c8c;
     text-align: center;
     margin: 50px 0;
 }
 
-.customhr:after {
+.nwFlower:after {
     content: 'New Flowers';
     display: inline-block;
     position: relative;
