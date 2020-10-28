@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Flower;
+use App\User;
 
 class ManagerController extends Controller
 {
     public function getHome()
     {
-        return view('managerView.homeManager');
+        $userCount = User::all()->count();
+        $flowers = Flower::all();
+        $countData = Flower::all()->count();
+        return view('managerView.homeManager', compact('flowers', 'countData', 'userCount'));
     }
 }

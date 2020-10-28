@@ -95,12 +95,12 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Add Categories
+                  <a href="{{route('category.create')}}">Add Categories
 
                   </a>
                 </li>
                 <li>
-                  <a href="#">Show Categories</a>
+                <a href="{{route('category.index')}}">Show Categories</a>
                 </li>
               </ul>
             </div>

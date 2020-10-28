@@ -27,10 +27,21 @@ Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth
 
 Route::prefix('manager')->middleware('role:manager')->group(function () {
     Route::get('home', 'ManagerController@getHome')->name('homeManager');
-
+    //flower
     Route::get('flower', 'FlowerController@index')->name('flower.index');
     Route::get('flower/create', 'FlowerController@create')->name('flower.create');
     Route::post('flower/create', 'FlowerController@store')->name('flower.store');
+    Route::get('flower/{id}/edit', 'FlowerController@edit')->name('flower.edit');
+    Route::put('flower/{id}/edit', 'FlowerController@update')->name('flower.update');
+    Route::delete('flower/{id}', 'FlowerController@destroy')->name('flower.delete');
+
+    //category
+    Route::get('category', 'CategoryFlowerController@index')->name('category.index');
+    Route::get('category/create', 'CategoryFlowerController@create')->name('category.create');
+    Route::post('category/create', 'CategoryFlowerController@store')->name('category.store');
+    Route::get('category/{id}/edit', 'CategoryFlowerController@edit')->name('category.edit');
+    Route::put('category/{id}/edit', 'CategoryFlowerController@update')->name('category.update');
+    Route::delete('category/{id}', 'CategoryFlowerController@destroy')->name('category.delete');
 });
 
 Route::group(['middleware' => 'role:user'], function () {

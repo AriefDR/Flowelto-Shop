@@ -1,7 +1,7 @@
 @extends('layout.layoutManager')
-@section('title','Welcome Home | Add Flowers ')
+@section('title','Welcome Home | Index Category ')
 @section('judulHeader')
-<a class="text-decoration-none" href="{{route('flower.create')}}">Add Flower</a>
+<a class="text-decoration-none" href="{{route('category.create')}}">Add Category</a>
 @endsection
 @section('content')
 @if(session()->has('success'))
@@ -13,15 +13,15 @@
   </div>
 @endif
 <div class="row">
-@foreach ($flowers as $flower)
+@foreach ($category as $ctg)
     <div class="col-lg-4" style="margin:10px 0;">
         <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{asset('storage/flower/' . $flower->flower_img)}}" alt="Card image cap">
+        <img class="card-img-top" src="{{asset('/storage/category/' . $ctg->category_img)}}" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">{{$flower->flower_name}}</h5>
-            <p class="card-text">{{substr($flower->flower_description,0,150)}}</p>
-            <a href="/manager/flower/{{$flower->id}}/edit"><button type="button" class="btn btn-outline-warning">Edit</button></a>
-            <form action="/manager/flower/{{$flower->id}}" method="POST" style="display: inline;">
+                <h5 class="card-title">{{$ctg->category_name}}</h5>
+
+            <a href="/manager/category/{{$ctg->id}}/edit"><button type="button" class="btn btn-outline-warning">Edit</button></a>
+            <form action="/manager/category/{{$ctg->id}}" method="POST" style="display: inline;">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE">
                 <button type="submit" class="btn btn-outline-danger" >Delete</button>

@@ -9,37 +9,22 @@ use Illuminate\Support\Facades\Hash;
 
 class FlowerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $flowers = Flower::all();
         return view('managerView.indexFlowers', compact('flowers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $flowers = Flower::all();
-        return view('managerView.createFlowers', compact('flowers'));
+        $category = Category::all();
+        return view('managerView.createFlowers', compact('flowers', 'category'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $flowers = new Flower;
         $request->validate([
             'category' => 'required|numeric',
             'flowerName' => 'required|min:5|unique:flowers,flower_name',
@@ -48,63 +33,68 @@ class FlowerController extends Controller
             'flowerImg' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
-        if ($request->hasFile('flowerImg')) {
-            $filename = time() . Hash::make($request->file('flowerImg')->getClientOriginalName()) . '.' . $request->file('flowerImg')->extension();
-            $request->file('flowerImg')->storeAs('/public/img/', $filename);
+        $filename = time() . Hash::make($request->file('flowerImg')->getClientOriginalName()) . '.' . $request->file('flowerImg')->extension();
+        $request->file('flowerImg')->storeAs('public/flower', $filename);
 
-            $flowers->flower_name = $request->flowerName;
-            $flowers->flower_description = $request->desFlower;
-            $flowers->flower_price = $request->flowerPrice;
-            $flowers->flower_img = $filename;
-            $flowers->category_id = $request->category;
-            $flowers->save();
-
-            return redirect()->route('flower.index');
-        }
+        $flowers = new Flower;
+        $flowers->flower_name = $request->flowerName;
+        $flowers->flower_description = $request->desFlower;
+        $flowers->category_id = $request->category;
+        $flowers->flower_price = $request->flowerPrice;
+        $flowers->flower_img = $filename;
+        $flowers->save();
+        return redirect()->route('flower.index')->with('success', 'Success input data Flower');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Flower  $flower
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Flower $flower)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Flower  $flower
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Flower $flower)
+
+    public function edit($id)
     {
-        //
+        $flower = Flower::findOrFail($id);
+        $category = Category::all();
+        return view('managerView.editFlowers', compact('flower', 'category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Flower  $flower
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Flower $flower)
+
+    public function update(Request $request, $id)
     {
-        //
+        $flowers = Flower::findOrFail($id);
+
+        $request->validate([
+            'category' => 'required|numeric',
+            'flowerName' => 'required|min:5|unique:flowers,flower_name',
+            'flowerPrice' => 'required|integer|min:50000',
+            'desFlower' => 'required|min:20',
+            'flowerImg' => 'image|mimes:jpeg,png,jpg|max:2048'
+        ]);
+        $flowers->flower_name = $request->flowerName;
+        $flowers->flower_description = $request->desFlower;
+        $flowers->category_id = $request->category;
+        $flowers->flower_price = $request->flowerPrice;
+
+        if ($request->hasFile('flowerImg')) {
+            $filename = time() . Hash::make($request->file('flowerImg')->getClientOriginalName()) . '.' . $request->file('flowerImg')->extension();
+            $request->file('flowerImg')->storeAs('public/img', $filename);
+            $flowers->flower_img = $filename;
+        } else {
+            $flowers->flower_img = $flowers->flower_img;
+        }
+
+        $flowers->update();
+        return redirect()->route('flower.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Flower  $flower
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Flower $flower)
+
+    public function destroy($id)
     {
-        //
+        $flowers = Flower::findOrFail($id);
+        $flowers->delete();
+
+        return redirect()->back()->with('success', 'Flower has been Delete');
     }
 }
