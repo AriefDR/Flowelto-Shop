@@ -1,8 +1,6 @@
 @extends('layout.layoutManager')
 @section('title','Welcome Home | Add Flowers ')
-@section('judulHeader')
-<a class="text-decoration-none" href="{{route('flower.create')}}">Add Flower</a>
-@endsection
+@section('judulHeader', 'Result Search')
 @section('content')
 @if(session()->has('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">

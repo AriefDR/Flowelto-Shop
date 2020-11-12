@@ -19,9 +19,8 @@
         <img class="card-img-top" src="{{asset('/storage/category/' . $ctg->category_img)}}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{$ctg->category_name}}</h5>
-
-            <a href="/manager/category/{{$ctg->id}}/edit"><button type="button" class="btn btn-outline-warning">Edit</button></a>
-            <form action="/manager/category/{{$ctg->id}}" method="POST" style="display: inline;">
+            <a href="{{url('/manager/category/'. $ctg->id . '/edit')}}"><button type="button" class="btn btn-outline-warning">Edit</button></a>
+            <form action="{{url('/manager/category/'. $ctg->id)}}" method="POST" style="display: inline;">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE">
                 <button type="submit" class="btn btn-outline-danger" >Delete</button>

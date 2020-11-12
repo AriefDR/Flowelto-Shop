@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\Category;
 use App\User;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +13,8 @@ class AuthController extends Controller
 
     public function getLogin()
     {
-        return view('login');
+        $category = Category::all();
+        return view('login', compact('category'));
     }
 
     public function postLogin(Request $request)
@@ -31,7 +32,8 @@ class AuthController extends Controller
 
     public function getRegister()
     {
-        return view('register');
+        $category = Category::all();
+        return view('register', compact('category'));
     }
 
     public function postRegister(Request $request)

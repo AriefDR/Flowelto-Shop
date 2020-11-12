@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\RoleUser;
+use App\Http\Middleware\SearchFlower;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel

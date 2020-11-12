@@ -41,13 +41,15 @@
                 <div class="row">
                     @for($j=$countData; $j>($countData-6); $j--)
                     <div class="col-md-4">
-                        <div class="card mb-2">
-                        <img class="card-img-top" src="{{asset('storage/flower/'. $flowers[$j-1]->flower_img)}}" alt="Card image cap">
-                            <div class="card-body">
-                            <h4 class="card-title">{{$flowers[$j-1]->flower_name}}</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a class="btn btn-primary">Button</a>
+                        <div class="card-group">
+                            <div class="card" style="height:33rem;">
+                                <a href="{{url('/manager/flower/'.$flowers[$j-1]->slug)}}">
+                                <img class="card-img-top" src="{{asset('storage/flower/' . $flowers[$j-1]->flower_img)}}" alt="Card image cap">
+                                </a>
+                              <div class="card-body">
+                                <h5 class="card-title">{{$flowers[$j-1]->flower_name}}</h5>
+                                <p class="card-text">{{substr($flowers[$j-1]->flower_description,0,150)}}</p>
+                              </div>
                             </div>
                         </div>
                     </div>

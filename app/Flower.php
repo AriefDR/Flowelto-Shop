@@ -9,7 +9,7 @@ class Flower extends Model
     protected $table = "flowers";
     protected $foreignKey = "category_id";
     protected $fillable = [
-        "flower_name", "flower_description", "flower_price",
+        "flower_name", "flower_description", "flower_price", 'stock', 'flower_img', 'slug'
     ];
 
     public function category()

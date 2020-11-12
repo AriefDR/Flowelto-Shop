@@ -87,37 +87,37 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mr-4">
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-white" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="/product" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories </a>
+                <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Fresh Flowers</a>
+                    @for ($i=0; $i<2; $i++)
+                        <a class="dropdown-item" href="{{url('/category/'.$category[$i]->category_name)}}">{{$category[$i]->category_name}}</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Featured Flowers</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">View All Categories</a>
+                    @endfor
+                    <a class="dropdown-item" href="{{route('user.search')}}">View All Categories</a>
                 </div>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="/about">About Us <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="{{url('/about')}}">About Us <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" method="GET" action="{{route('user.search')}}">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
                 <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
             </form>
             <ul class="navbar-nav ml-2">
                 @if(!Auth::check())
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="/login">Login <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="{{url('/login')}}">Login <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link text-white" href="/register">Register <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="{{url('/register')}}">Register <span class="sr-only">(current)</span></a>
                 </li>
                 @else
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="/product" id="drProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{strtoupper(Auth::user()->role)}}</a>
+                <a class="nav-link dropdown-toggle text-white"  id="drProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{strtoupper(Auth::user()->role)}}</a>
                     <div class="dropdown-menu" aria-labelledby="drProfile">
                         <a class="dropdown-item" href="#">MyChart</a>
                         <div class="dropdown-divider"></div>
@@ -165,10 +165,10 @@
     <script src="{{asset('/js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('/js/bootstrap.min.js')}}"></script>
 
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script> --}}
+
   </body>
 </html>

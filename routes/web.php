@@ -19,11 +19,15 @@ Route::get('/', 'UserController@getHome')->name('home');
 Route::middleware('guest')->group(function () {
     Route::get('/register', 'AuthController@getRegister')->name('register');
     Route::post('/register', 'AuthController@postRegister');
-
     Route::get('/login', 'AuthController@getLogin')->name('login');
     Route::post('/login', 'AuthController@postLogin');
 });
+
 Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth');
+
+Route::get('/flower', 'FlowerController@search')->name('user.search');
+Route::get('/category/{category}', 'FlowerController@searchCategory')->name('user.searchCategory');
+Route::get('/{slug}', 'FlowerController@show')->name('userflower.show');
 
 Route::prefix('manager')->middleware('role:manager')->group(function () {
     Route::get('home', 'ManagerController@getHome')->name('homeManager');
@@ -33,6 +37,8 @@ Route::prefix('manager')->middleware('role:manager')->group(function () {
     Route::post('flower/create', 'FlowerController@store')->name('flower.store');
     Route::get('flower/{id}/edit', 'FlowerController@edit')->name('flower.edit');
     Route::put('flower/{id}/edit', 'FlowerController@update')->name('flower.update');
+    Route::get('flower/search', 'FlowerController@search')->name('flower.search');
+    Route::get('flower/{slug}', 'FlowerController@show')->name('flower.show');
     Route::delete('flower/{id}', 'FlowerController@destroy')->name('flower.delete');
 
     //category
@@ -43,6 +49,5 @@ Route::prefix('manager')->middleware('role:manager')->group(function () {
     Route::put('category/{id}/edit', 'CategoryFlowerController@update')->name('category.update');
     Route::delete('category/{id}', 'CategoryFlowerController@destroy')->name('category.delete');
 });
-
 Route::group(['middleware' => 'role:user'], function () {
 });

@@ -16,7 +16,9 @@ class CreateFlowersTable extends Migration
         Schema::create('flowers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('flower_name')->unique();
+            $table->string('slug');
             $table->text('flower_description');
+            $table->integer('stock');
             $table->bigInteger('flower_price');
             $table->string('flower_img');
             $table->unsignedInteger('category_id');

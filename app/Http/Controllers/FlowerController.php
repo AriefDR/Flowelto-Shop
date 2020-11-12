@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Flower;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use illuminate\Support\Str;
 
 class FlowerController extends Controller
 {
@@ -14,6 +16,37 @@ class FlowerController extends Controller
     {
         $flowers = Flower::all();
         return view('managerView.indexFlowers', compact('flowers'));
+    }
+
+    public function search(Request $request)
+    {
+        $category = Category::all();
+        $search_q = $request->input('search');
+        $flowers = Flower::all();
+
+        if (Auth::user()) {
+            if (!empty($search_q) && Auth::user()->role == "manager")
+                $flowers = Flower::where('flower_name', 'like', '%' . $search_q . '%')
+                    ->orWhereHas('category', function ($query) use ($search_q) {
+                        $query->where('category_name', 'like', '%' . $search_q . '%');
+                    })->get();
+            return view('managerView.searchManager', compact('flowers', 'category'));
+        } else if (!Auth::user() || Auth::user()->role == "user") {
+            if (!empty($search_q))
+                $flowers = Flower::where('flower_name', 'like', '%' . $search_q . '%')
+                    ->orWhereHas('category', function ($query) use ($search_q) {
+                        $query->where('category_name', 'like', '%' . $search_q . '%');
+                    })->get();
+            return view('search', compact('flowers', 'category'));
+        }
+    }
+    public function searchCategory($asdas)
+    {
+        $category = Category::all();
+        $flowers = Flower::with('category')->whereHas('category', function ($query) use ($asdas) {
+            $query->where('category_name', $asdas);
+        })->get();
+        return view('search', compact('flowers', 'category'));
     }
 
     public function create()
@@ -28,6 +61,7 @@ class FlowerController extends Controller
         $request->validate([
             'category' => 'required|numeric',
             'flowerName' => 'required|min:5|unique:flowers,flower_name',
+            'flowerStock' => 'required|integer|min:1',
             'flowerPrice' => 'required|integer|min:50000',
             'desFlower' => 'required|min:20',
             'flowerImg' => 'required|image|mimes:jpeg,png,jpg|max:2048'
@@ -36,8 +70,12 @@ class FlowerController extends Controller
         $filename = time() . Hash::make($request->file('flowerImg')->getClientOriginalName()) . '.' . $request->file('flowerImg')->extension();
         $request->file('flowerImg')->storeAs('public/flower', $filename);
 
+        $slug = Str::slug($request->flowerName, '-');
+
         $flowers = new Flower;
         $flowers->flower_name = $request->flowerName;
+        $flowers->slug = $slug;
+        $flowers->stock = $request->flowerStock;
         $flowers->flower_description = $request->desFlower;
         $flowers->category_id = $request->category;
         $flowers->flower_price = $request->flowerPrice;
@@ -47,9 +85,15 @@ class FlowerController extends Controller
     }
 
 
-    public function show(Flower $flower)
+    public function show($slug)
     {
-        //
+        $flower = Flower::where('slug', $slug)->first();
+        if (empty($flower)) abort(404);
+        if (!Auth::check() || Auth::user()->role == "user") {
+            $category = Category::all();
+            return view('detail', compact('flower', 'category'));
+        }
+        return view('managerView.detailFlower', compact('flower'));
     }
 
 
@@ -68,11 +112,13 @@ class FlowerController extends Controller
         $request->validate([
             'category' => 'required|numeric',
             'flowerName' => 'required|min:5|unique:flowers,flower_name',
+            'flowerStock' => 'required|integer|min:1',
             'flowerPrice' => 'required|integer|min:50000',
             'desFlower' => 'required|min:20',
             'flowerImg' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
         $flowers->flower_name = $request->flowerName;
+        $flowers->stock = $request->flowerStock;
         $flowers->flower_description = $request->desFlower;
         $flowers->category_id = $request->category;
         $flowers->flower_price = $request->flowerPrice;

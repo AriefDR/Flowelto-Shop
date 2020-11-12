@@ -33,7 +33,7 @@
             <div class="carousel-caption d-none d-md-block">
               <h1 class="display-4">Dapatkan Penawaran Menarik Bagi Pengguna Baru <br> <span class="font-weight-bold">Up To 50%</span></h1>
               <hr class="my-4">
-              <a class="btn btn-primary btn-lg font-weight-bold" href="/register" role="button">SIGN UP NOW</a>
+            <a class="btn btn-primary btn-lg font-weight-bold" href="{{url('/register')}}" role="button">SIGN UP NOW</a>
             </div>
           </div>
         </div>
@@ -52,137 +52,59 @@
 
     <div class="container">
     <div class="row mx-auto">
-        <div class="card mr-3 ml-3" style="width: 15rem;">
-          <img src="img/bunga1.jpg" class="card-img-top" alt="...">
-          <div class="card-body bg-light">
-            <h5 class="card-title">Ava</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star-half-alt text-success"></i>
-            <i class="far fa-star text-success"></i> <br><br>
-            <a href="#" class="btn btn-primary" data-target="#produk1" data-toggle="modal" >Details</a>
-            <a href="#" class="btn btn-danger">Rp. 220.000</a>
-          </div>
+        @for($i=(count($flowers)); $i>(count($flowers)-3); $i--)
+        <div class="col-lg-4">
+            <div class="card" style="height:36rem;" >
+                <a href="{{url('/'. $flowers[$i-1]->slug)}}">
+                <img src="{{asset('/storage/flower/'.$flowers[$i-1]->flower_img)}}" class="card-img-top" alt="Gambar Bunga">
+                </a>
+                <div class="card-body bg-white">
+                    <h5 class="card-title">{{$flowers[$i-1]->flower_name}}</h5>
+                    <p class="card-text">{{substr($flowers[$i-1]->flower_description,0,100)}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{url('/'. $flowers[$i-1]->slug)}}" class="btn btn-primary"  >Details</a>
+                    <a href="#" class="btn btn-danger">Buy</a>
+                </div>
+            </div>
         </div>
-
-        <div class="card mr-3 ml-3" style="width: 15rem;">
-          <img src="img/bunga2.jpg" class="card-img-top" alt="...">
-          <div class="card-body bg-light">
-            <h5 class="card-title">Aneska</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star-half-alt text-success"></i>
-            <i class="far fa-star text-success"></i> <br><br>
-            <a href="#" class="btn btn-primary" data-target="#produk2" data-toggle="modal" >Details</a>
-            <a href="#" class="btn btn-danger">Rp. 220.000</a>
-          </div>
-        </div>
-
-        <div class="card mr-3 ml-3" style="width: 15rem;">
-          <img src="img/bunga3.jpg" class="card-img-top" alt="...">
-          <div class="card-body bg-light">
-            <h5 class="card-title">Arisha</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star-half-alt text-success"></i>
-            <i class="far fa-star text-success"></i> <br><br>
-            <a href="#" class="btn btn-primary" data-target="#produk3" data-toggle="modal" >Details</a>
-            <a href="#" class="btn btn-danger">Rp. 220.000</a>
-          </div>
-        </div>
-
-        <div class="card mr-3 ml-3" style="width: 15rem;">
-          <img src="img/bunga4.jpg" class="card-img-top" alt="...">
-          <div class="card-body bg-light">
-            <h5 class="card-title">Arabella</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star-half-alt text-success"></i>
-            <i class="far fa-star text-success"></i> <br><br>
-            <a href="#" class="btn btn-primary" data-target="#produk4" data-toggle="modal" >Details</a>
-            <a href="#" class="btn btn-danger">Rp. 220.000</a>
-          </div>
-        </div>
+        @endfor
       </div>
 
       <br><br>
       <div class="text-center">
         <button type="button" class="btn btn-info btn-lg text-white">VIEW ALL NEW PRODUCTS</button>
       </div>
-
       <br><br><br><br><br><br>
-      <h4 class="text-center font-weight-bold m-4">FRESH FLOWERS</h4>
-
+    <h4 class="text-center font-weight-bold m-4">{{$category[0]->category_name}}</h4>
       <div class="row mx-auto mt-5">
-        <div class="card mr-3 ml-3" style="width: 15rem;">
-          <img src="img/bunga5.jpg" class="card-img-top" alt="...">
-          <div class="card-body bg-light">
-            <h5 class="card-title">Aurora</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star-half-alt text-success"></i>
-            <i class="far fa-star text-success"></i> <br><br>
-            <a href="#" class="btn btn-primary" data-target="#produk5" data-toggle="modal" >Details</a>
-            <a href="#" class="btn btn-danger">Rp. 220.000</a>
-          </div>
+        @php
+            $i = 1;
+        @endphp
+        @foreach ($flowers as $flct)
+        @if($flct->category_id == $category[0]->id)
+        <div class="col-lg-6">
+            <div class="card " style="height: 36rem; max-width: 20rem;">
+                <a href="{{url('/'.$flct->slug)}}">
+                <img src="{{asset('/storage/flower/'.$flct->flower_img)}}" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body bg-white">
+                <h5 class="card-title">{{$flct->flower_name}}</h5>
+                  <p class="card-text">{{substr($flct->flower_description,0,100)}}.</p>
+                </div>
+                <div class="card-footer">
+                <a href="{{url('/'.$flct->slug)}}" class="btn btn-primary" >Details</a>
+                  <a href="#" class="btn btn-danger">Buy</a>
+                </div>
+              </div>
         </div>
-
-        <div class="card mr-3 ml-3" style="width: 15rem;">
-          <img src="img/bunga6.jpg" class="card-img-top" alt="...">
-          <div class="card-body bg-light">
-            <h5 class="card-title">Adila</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star-half-alt text-success"></i>
-            <i class="far fa-star text-success"></i> <br><br>
-            <a href="#" class="btn btn-primary" data-target="#produk6" data-toggle="modal" >Details</a>
-            <a href="#" class="btn btn-danger">Rp. 220.000</a>
-          </div>
-        </div>
-
-        <div class="card mr-3 ml-3" style="width: 15rem;">
-          <img src="img/bunga7.jpg" class="card-img-top" alt="...">
-          <div class="card-body bg-light">
-            <h5 class="card-title">Angelina</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star-half-alt text-success"></i>
-            <i class="far fa-star text-success"></i> <br><br>
-            <a href="#" class="btn btn-primary" data-target="#produk7" data-toggle="modal" >Details</a>
-            <a href="#" class="btn btn-danger">Rp. 220.000</a>
-          </div>
-        </div>
-
-        <div class="card mr-3 ml-3" style="width: 15rem;">
-          <img src="img/bunga8.jpg" class="card-img-top" alt="...">
-          <div class="card-body bg-light">
-            <h5 class="card-title">Aurelia</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star text-success"></i>
-            <i class="fas fa-star-half-alt text-success"></i>
-            <i class="far fa-star text-success"></i> <br><br>
-            <a href="#" class="btn btn-primary" data-target="#produk8" data-toggle="modal" >Details</a>
-            <a href="#" class="btn btn-danger">Rp. 220.000</a>
-          </div>
-        </div>
+        @php
+            $i++;
+            if($i == 4) break;
+        @endphp
+        @endif
+        @endforeach
       </div>
-
       <br><br>
       <div class="text-center">
         <button type="button" class="btn btn-info btn-lg text-white">VIEW ALL FRESH FLOWERS</button>
@@ -221,398 +143,5 @@
         </div>
       </div>
     </div>
-
-    <div class="modal fade" id="produk1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col md-6">
-                  <img src="img/bunga1.jpg" alt="">
-                </div>
-                <div class="col md-6">
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Nama Produk</th>
-                      <td>Ava</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>Bunga Jepang</td>
-                    </tr>
-                    <tr>
-                      <th>Stock</th>
-                      <td>>25</td>
-                    </tr>
-                    <tr>
-                      <th>Harga</th>
-                      <td>Rp. 220.000</td>
-                    </tr>
-                    <tr>
-                      <th>Biaya Ongkir</th>
-                      <td>Rp. 15.000</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
-              <button type="button" class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="produk2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col md-6">
-                  <img src="img/bunga2.jpg" alt="">
-                </div>
-                <div class="col md-6">
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Nama Produk</th>
-                      <td>Aneska</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>Bunga Korea</td>
-                    </tr>
-                    <tr>
-                      <th>Stock</th>
-                      <td>>25</td>
-                    </tr>
-                    <tr>
-                      <th>Harga</th>
-                      <td>Rp. 220.000</td>
-                    </tr>
-                    <tr>
-                      <th>Biaya Ongkir</th>
-                      <td>Rp. 15.000</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
-              <button type="button" class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="produk3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col md-6">
-                  <img src="img/bunga3.jpg" alt="">
-                </div>
-                <div class="col md-6">
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Nama Produk</th>
-                      <td>Arisha</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>Bunga Cina</td>
-                    </tr>
-                    <tr>
-                      <th>Stock</th>
-                      <td>>25</td>
-                    </tr>
-                    <tr>
-                      <th>Harga</th>
-                      <td>Rp. 220.000</td>
-                    </tr>
-                    <tr>
-                      <th>Biaya Ongkir</th>
-                      <td>Rp. 15.000</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
-              <button type="button" class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="produk4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col md-6">
-                  <img src="img/bunga4.jpg" alt="">
-                </div>
-                <div class="col md-6">
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Nama Produk</th>
-                      <td>Arabella</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>Bunga Thailand</td>
-                    </tr>
-                    <tr>
-                      <th>Stock</th>
-                      <td>>25</td>
-                    </tr>
-                    <tr>
-                      <th>Harga</th>
-                      <td>Rp. 220.000</td>
-                    </tr>
-                    <tr>
-                      <th>Biaya Ongkir</th>
-                      <td>Rp. 15.000</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
-              <button type="button" class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="produk5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col md-6">
-                  <img src="img/bunga5.jpg" alt="">
-                </div>
-                <div class="col md-6">
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Nama Produk</th>
-                      <td>Aurora</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>Bunga Jepang</td>
-                    </tr>
-                    <tr>
-                      <th>Stock</th>
-                      <td>>25</td>
-                    </tr>
-                    <tr>
-                      <th>Harga</th>
-                      <td>Rp. 220.000</td>
-                    </tr>
-                    <tr>
-                      <th>Biaya Ongkir</th>
-                      <td>Rp. 15.000</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
-              <button type="button" class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="produk6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col md-6">
-                  <img src="img/bunga6.jpg" alt="">
-                </div>
-                <div class="col md-6">
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Nama Produk</th>
-                      <td>Adila</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>Bunga Korea</td>
-                    </tr>
-                    <tr>
-                      <th>Stock</th>
-                      <td>>25</td>
-                    </tr>
-                    <tr>
-                      <th>Harga</th>
-                      <td>Rp. 220.000</td>
-                    </tr>
-                    <tr>
-                      <th>Biaya Ongkir</th>
-                      <td>Rp. 15.000</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
-              <button type="button" class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="produk7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col md-6">
-                  <img src="img/bunga7.jpg" alt="">
-                </div>
-                <div class="col md-6">
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Nama Produk</th>
-                      <td>Angelina</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>Bunga Cina</td>
-                    </tr>
-                    <tr>
-                      <th>Stock</th>
-                      <td>>25</td>
-                    </tr>
-                    <tr>
-                      <th>Harga</th>
-                      <td>Rp. 220.000</td>
-                    </tr>
-                    <tr>
-                      <th>Biaya Ongkir</th>
-                      <td>Rp. 15.000</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
-              <button type="button" class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="produk8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col md-6">
-                  <img src="img/bunga8.jpg" alt="">
-                </div>
-                <div class="col md-6">
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Nama Produk</th>
-                      <td>Aurelia</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>Bunga Thailand</td>
-                    </tr>
-                    <tr>
-                      <th>Stock</th>
-                      <td>>25</td>
-                    </tr>
-                    <tr>
-                      <th>Harga</th>
-                      <td>Rp. 220.000</td>
-                    </tr>
-                    <tr>
-                      <th>Biaya Ongkir</th>
-                      <td>Rp. 15.000</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
-              <button type="button" class="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <br><br>
 @endsection

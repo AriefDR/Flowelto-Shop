@@ -29,6 +29,15 @@
         @endif
     </div>
     <div class="form-group ">
+        <label for="flowerStock">Flower Stock</label>
+    <input  type="number" class="form-control {{$errors->has('flowerStock') ? 'is-invalid' : '' }}" name="flowerStock" id="flowerStock" placeholder="1" value="{{$flower->stock}}">
+        @if ($errors->has('flowerStock'))
+            <div class="invalid-feedback">
+                {{$errors->first('flowerStock')}}
+            </div>
+        @endif
+    </div>
+    <div class="form-group ">
         <label for="flowerPrice">Flower Price in Rp.</label>
     <input name="flowerPrice" type="number" class="form-control {{$errors->has('flowerPrice') ? 'is-invalid' : '' }}" name="flowerPrice" id="flowerPrice" placeholder=" ex: Rp. 1000000" value="{{$flower->flower_price}}">
         @if ($errors->has('flowerPrice'))

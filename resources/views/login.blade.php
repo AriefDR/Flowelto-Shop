@@ -4,19 +4,6 @@
 
 @section('container')
 
-<!-- <style>
-    .container {
-    width: 30%;
-    margin-top: 9%;
-    box-shadow: 0 3px 20px rgba(0,0,0,0.3);
-    padding: 40px;
-}
-
-button {
-    width: 49%;
-}
-</style> -->
-
 <br><br><br>
     <div class="container">
         <h4 class="text-center">LOGIN</h4>
