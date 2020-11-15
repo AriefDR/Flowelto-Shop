@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Flower;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class CategoryFlowerController extends Controller
 {
@@ -12,6 +14,15 @@ class CategoryFlowerController extends Controller
     {
         $category = Category::all();
         return view('managerView.indexCategory', compact('category'));
+    }
+
+    public function searchCategory($asdas)
+    {
+        $category = Category::all();
+        $flowers = Flower::with('category')->whereHas('category', function ($query) use ($asdas) {
+            $query->where('slug', $asdas);
+        })->get();
+        return view('search', compact('flowers', 'category'));
     }
 
     public function create()
@@ -28,6 +39,7 @@ class CategoryFlowerController extends Controller
 
         $category = new Category;
         $category->category_name = $request->categoryName;
+        $category->slug = Str::slug($request->categoryName, '-');
 
         if ($request->has('categoryImg')) {
             $filename = time() . Hash::make($request->file('categoryImg')->getClientOriginalName()) . '.' . $request->file('categoryImg')->extension();
@@ -54,6 +66,8 @@ class CategoryFlowerController extends Controller
         ]);
 
         $category->category_name = $request->categoryName;
+        $category->slug = Str::slug($request->categoryName, '-');
+
         if ($request->has('categoryImg')) {
             $filename = time() . Hash::make($request->file('categoryImg')->getClientOriginalName()) . '.' . $request->file('categoryImg')->extension();
             $request->file('categoryImg')->storeAs('public/category', $filename);

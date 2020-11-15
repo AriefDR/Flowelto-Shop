@@ -93,7 +93,7 @@
                 <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     @for ($i=0; $i<2; $i++)
-                        <a class="dropdown-item" href="{{url('/category/'.$category[$i]->category_name)}}">{{$category[$i]->category_name}}</a>
+                        <a class="dropdown-item" href="{{url('/category/'.$category[$i]->slug)}}">{{$category[$i]->category_name}}</a>
                     <div class="dropdown-divider"></div>
                     @endfor
                     <a class="dropdown-item" href="{{route('user.search')}}">View All Categories</a>
@@ -119,7 +119,7 @@
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white"  id="drProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{strtoupper(Auth::user()->role)}}</a>
                     <div class="dropdown-menu" aria-labelledby="drProfile">
-                        <a class="dropdown-item" href="#">MyChart</a>
+                        <a class="dropdown-item" href="{{route('flower.shoppingCart')}}">MyChart <span class="badge badge-info">{{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Transaction History</a>
                         <div class="dropdown-divider"></div>

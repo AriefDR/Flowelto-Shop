@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Category;
 use App\Flower;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class FlowerController extends Controller
 {
@@ -24,8 +26,8 @@ class FlowerController extends Controller
         $search_q = $request->input('search');
         $flowers = Flower::all();
 
-        if (Auth::user()) {
-            if (!empty($search_q) && Auth::user()->role == "manager")
+        if (Auth::user() && Auth::user()->role == "manager") {
+            if (!empty($search_q))
                 $flowers = Flower::where('flower_name', 'like', '%' . $search_q . '%')
                     ->orWhereHas('category', function ($query) use ($search_q) {
                         $query->where('category_name', 'like', '%' . $search_q . '%');
@@ -39,14 +41,6 @@ class FlowerController extends Controller
                     })->get();
             return view('search', compact('flowers', 'category'));
         }
-    }
-    public function searchCategory($asdas)
-    {
-        $category = Category::all();
-        $flowers = Flower::with('category')->whereHas('category', function ($query) use ($asdas) {
-            $query->where('category_name', $asdas);
-        })->get();
-        return view('search', compact('flowers', 'category'));
     }
 
     public function create()
@@ -135,6 +129,31 @@ class FlowerController extends Controller
         return redirect()->route('flower.index');
     }
 
+
+    public function getAddToCart(Request $request, $id)
+    {
+        $flower = Flower::find($id);
+        $oldCart = Session::has('cart') ?  Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($flower, $flower->id, $request->input('valQty'));
+
+        $request->session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'item added to cart');
+    }
+
+    public function getShoppingCart()
+    {
+        $category = Category::all();
+        if (!Session::has('cart')) {
+            return view('shoppingCart', compact('category'));
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('shoppingCart', [
+            'flowers' => $cart->items, 'totalPrice' => $cart->totalPrice,
+            'category' => $category
+        ]);
+    }
 
     public function destroy($id)
     {

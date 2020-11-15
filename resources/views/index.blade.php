@@ -54,17 +54,13 @@
     <div class="row mx-auto">
         @for($i=(count($flowers)); $i>(count($flowers)-3); $i--)
         <div class="col-lg-4">
-            <div class="card" style="height:36rem;" >
+            <div class="card" style="height:33rem;" >
                 <a href="{{url('/'. $flowers[$i-1]->slug)}}">
                 <img src="{{asset('/storage/flower/'.$flowers[$i-1]->flower_img)}}" class="card-img-top" alt="Gambar Bunga">
                 </a>
                 <div class="card-body bg-white">
                     <h5 class="card-title">{{$flowers[$i-1]->flower_name}}</h5>
                     <p class="card-text">{{substr($flowers[$i-1]->flower_description,0,100)}}</p>
-                </div>
-                <div class="card-footer">
-                    <a href="{{url('/'. $flowers[$i-1]->slug)}}" class="btn btn-primary"  >Details</a>
-                    <a href="#" class="btn btn-danger">Buy</a>
                 </div>
             </div>
         </div>
@@ -84,7 +80,7 @@
         @foreach ($flowers as $flct)
         @if($flct->category_id == $category[0]->id)
         <div class="col-lg-6">
-            <div class="card " style="height: 36rem; max-width: 20rem;">
+            <div class="card " style="height: 33rem; max-width: 20rem;">
                 <a href="{{url('/'.$flct->slug)}}">
                 <img src="{{asset('/storage/flower/'.$flct->flower_img)}}" class="card-img-top" alt="...">
                 </a>
@@ -93,8 +89,7 @@
                   <p class="card-text">{{substr($flct->flower_description,0,100)}}.</p>
                 </div>
                 <div class="card-footer">
-                <a href="{{url('/'.$flct->slug)}}" class="btn btn-primary" >Details</a>
-                  <a href="#" class="btn btn-danger">Buy</a>
+                    
                 </div>
               </div>
         </div>

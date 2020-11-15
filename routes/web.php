@@ -25,8 +25,13 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth');
 
+Route::group(['middleware' => 'role:user'], function () {
+    Route::get('/add-to-cart/{id}', 'FlowerController@getAddToCart')->name('flower.addToCart');
+    Route::get('/shopping-cart', 'FlowerController@getShoppingCart')->name('flower.shoppingCart');
+});
+
 Route::get('/flower', 'FlowerController@search')->name('user.search');
-Route::get('/category/{category}', 'FlowerController@searchCategory')->name('user.searchCategory');
+Route::get('/category/{category}', 'CategoryFlowerController@searchCategory')->name('user.searchCategory');
 Route::get('/{slug}', 'FlowerController@show')->name('userflower.show');
 
 Route::prefix('manager')->middleware('role:manager')->group(function () {
@@ -48,6 +53,4 @@ Route::prefix('manager')->middleware('role:manager')->group(function () {
     Route::get('category/{id}/edit', 'CategoryFlowerController@edit')->name('category.edit');
     Route::put('category/{id}/edit', 'CategoryFlowerController@update')->name('category.update');
     Route::delete('category/{id}', 'CategoryFlowerController@destroy')->name('category.delete');
-});
-Route::group(['middleware' => 'role:user'], function () {
 });

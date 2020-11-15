@@ -16,6 +16,7 @@ class CreateCategoryFlowersTable extends Migration
         Schema::create('category_flowers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('category_name', 30)->unique();
+            $table->string('slug');
             $table->string('category_img')->nullable();
             $table->timestamps();
         });
