@@ -121,7 +121,7 @@
                     <div class="dropdown-menu" aria-labelledby="drProfile">
                         <a class="dropdown-item" href="{{route('flower.shoppingCart')}}">MyChart <span class="badge badge-info">{{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}</span> </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Transaction History</a>
+                        <a class="dropdown-item" href="{{route('get.history')}}">Transaction History</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Change Password</a>
                         <div class="dropdown-divider"></div>

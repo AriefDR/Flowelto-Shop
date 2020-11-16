@@ -40,12 +40,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="text-center">Total: Rp. {{ $totalPrice }}</h3>
+                <div class="text-center">
+                    <a href="{{route('get.checkout')}}" type="button" class="btn btn-success ">Checkout</a>
+                </div>
             </div>
         </div>
     @else
-        <div class="row">
+        <div class="row d-flex align-items-center" style="height: 50vh">
             <div class="col-lg-12">
-                  <h3 class="font-weight-bold text-center">Shopping Cart Is Empty</h3>
+                  <h1 class="font-weight-bold text-center">Shopping Cart Is Empty</h1>
             </div>
         </div>
     @endif

@@ -20,12 +20,13 @@ class Cart
 
     public function add($item, $id, $qty)
     {
-        $storeItem = ['qty' => 0, 'price' => $item->flower_price, 'item' => $item];
+        $storeItem = ['qty' => 0, 'price' => $item->flower_price, 'item' => $item, 'img' => $item->flower_img];
         if ($this->items) {
             if (array_key_exists($id, $this->items)) {
                 $storeItem = $this->items[$id];
             }
         }
+        $storeItem['img'] = $item->flower_img;
         $storeItem['qty'] += $qty;
         $storeItem['price'] = $item->flower_price * $storeItem['qty'];
         $this->items[$id] = $storeItem;

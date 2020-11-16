@@ -19,6 +19,8 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('payment_id');
             $table->text('cart');
+            $table->bigInteger('total_price');
+            $table->text('destination_address');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('payment_id')->references('id')->on('type_payments')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

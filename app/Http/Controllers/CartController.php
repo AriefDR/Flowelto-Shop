@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Flower;
 use App\Category;
+use App\Transaction;
+use App\TypePayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -78,4 +80,5 @@ class CartController extends Controller
             Session::forget('cart');
         return redirect()->back();
     }
+
 }

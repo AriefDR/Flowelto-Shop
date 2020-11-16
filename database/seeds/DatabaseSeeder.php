@@ -17,8 +17,6 @@ class DatabaseSeeder extends Seeder
             CategoryFlowersTableSeeder::class,
             FlowersTableSeeder::class,
             TypePaymentsTableSeeder::class,
-            TransactionsTableSeeder::class,
-            DetailTransactionsTableSeeder::class,
             AddressTableSeeder::class
         ]);
     }

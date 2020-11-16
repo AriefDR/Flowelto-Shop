@@ -3,6 +3,12 @@
 @section('title', 'Flowelto Shop')
 
 @section('container')
+<br><br>
+@if(session()->has('success'))
+    <script>
+        alert('{{session()->get('success')}}');
+    </script>
+@endif
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -89,7 +95,7 @@
                   <p class="card-text">{{substr($flct->flower_description,0,100)}}.</p>
                 </div>
                 <div class="card-footer">
-                    
+
                 </div>
               </div>
         </div>

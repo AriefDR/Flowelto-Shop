@@ -30,6 +30,12 @@ Route::group(['middleware' => 'role:user'], function () {
     Route::get('/shopping-cart', 'CartController@getShoppingCart')->name('flower.shoppingCart');
     Route::get('/shopping-cart/{id}', 'CartController@updateCart')->name('update.flower.shoppingCart');
     Route::get('/shopping-cart/remove/{id}', 'CartController@removeItem')->name('update.flower.shoppingCart');
+
+    //storing data to database
+    Route::get('/checkout', 'TransacationController@getCheckout')->name('get.checkout');
+    Route::post('/checkout', 'TransacationController@postCheckout')->name('post.checkout');
+    Route::get('/transaction-history', 'TransacationController@getHistory')->name('get.history');
+    Route::get('/transaction-history/{id}', 'TransacationController@getDetailHistory')->name('get.detail.history');
 });
 
 Route::get('/flower', 'FlowerController@search')->name('user.search');
