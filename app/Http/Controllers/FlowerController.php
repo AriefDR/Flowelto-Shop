@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
 use App\Category;
 use App\Flower;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
+
 use Illuminate\Support\Str;
 
 class FlowerController extends Controller
@@ -128,33 +127,6 @@ class FlowerController extends Controller
         $flowers->update();
         return redirect()->route('flower.index');
     }
-
-
-    public function getAddToCart(Request $request, $id)
-    {
-        $flower = Flower::find($id);
-        $oldCart = Session::has('cart') ?  Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->add($flower, $flower->id, $request->input('valQty'));
-
-        $request->session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'item added to cart');
-    }
-
-    public function getShoppingCart()
-    {
-        $category = Category::all();
-        if (!Session::has('cart')) {
-            return view('shoppingCart', compact('category'));
-        }
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-        return view('shoppingCart', [
-            'flowers' => $cart->items, 'totalPrice' => $cart->totalPrice,
-            'category' => $category
-        ]);
-    }
-
     public function destroy($id)
     {
         $flowers = Flower::findOrFail($id);

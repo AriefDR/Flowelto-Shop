@@ -142,22 +142,6 @@
 
     @yield('container')
 
-    <div class="footer-bottom bg-warning">
-        <div class="row">
-            <div class="bottom-left col-sm-6">
-              <div class="copyright text-white font-weight-bold p-2">
-                <p class="far fa-copyright font-weight-bold">2020 Flowelto Shop.</p>
-              </div>
-            </div>
-            <div class="bottom-right col-sm-6">
-              <div class="socmed text-right text-white font-weight-bold p-2">
-                <p class="fab fa-facebook-f ml-3 mt-2"></p>
-                <p class="fab fa-instagram ml-3 mt-2"></p>
-                <p class="fab fa-twitter ml-3 mr-3 mt-2"></p>
-              </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

@@ -18,13 +18,19 @@
                     <h5 class="font-weight-bold"> Rp. {{ $flower['price'] }} </h5>
                 </div>
                 <div class="col-lg-4 d-flex align-items-center">
-                    <form action="">
+                    <form action="{{url('/shopping-cart/'. $flower['item']['id'])}}" method="get">
                         <div class="form-group">
                             <div class="input-group mb-3">
-                                <input type="number" class="form-control" min="1" value="{{ $flower['qty'] }}">
+                                <input type="number" class="form-control {{$errors->any() ? 'is-invalid' : '' }}" min="0" value="{{ $flower['qty'] }}" name="valQty">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">Update</button>
+                                    <button class="btn btn-primary" type="submit">Update</button>
+                                    <a href="{{url('/shopping-cart/remove/'. $flower['item']['id'])}}" class="btn btn-danger">Cancel Item</a>
                                 </div>
+                                @if ($errors->any())
+                                    <div class="invalid-feedback">
+                                        {{$errors->first()}}
+                                    </div>
+                                @endif
                               </div>
                         </div>
                     </form>

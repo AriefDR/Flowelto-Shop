@@ -26,8 +26,10 @@ Route::middleware('guest')->group(function () {
 Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth');
 
 Route::group(['middleware' => 'role:user'], function () {
-    Route::get('/add-to-cart/{id}', 'FlowerController@getAddToCart')->name('flower.addToCart');
-    Route::get('/shopping-cart', 'FlowerController@getShoppingCart')->name('flower.shoppingCart');
+    Route::get('/add-to-cart/{id}', 'CartController@addToCart')->name('flower.addToCart');
+    Route::get('/shopping-cart', 'CartController@getShoppingCart')->name('flower.shoppingCart');
+    Route::get('/shopping-cart/{id}', 'CartController@updateCart')->name('update.flower.shoppingCart');
+    Route::get('/shopping-cart/remove/{id}', 'CartController@removeItem')->name('update.flower.shoppingCart');
 });
 
 Route::get('/flower', 'FlowerController@search')->name('user.search');
