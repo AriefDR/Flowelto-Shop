@@ -24,7 +24,6 @@
                                 <input type="number" class="form-control {{$errors->any() ? 'is-invalid' : '' }}" min="0" value="{{ $flower['qty'] }}" name="valQty">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">Update</button>
-                                    <a href="{{url('/shopping-cart/remove/'. $flower['item']['id'])}}" class="btn btn-danger">Cancel Item</a>
                                 </div>
                                 @if ($errors->any())
                                     <div class="invalid-feedback">

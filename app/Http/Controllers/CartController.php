@@ -48,7 +48,7 @@ class CartController extends Controller
     public function updateCart(Request $request, $id)
     {
         $request->validate([
-            'valQty' => 'required|integer|min:1'
+            'valQty' => 'required|integer|min:0'
         ]);
         $valQty = $request->input('valQty');
         $flower = Flower::find($id);
@@ -66,19 +66,4 @@ class CartController extends Controller
             return redirect()->back();
         }
     }
-
-    public function removeItem($id)
-    {
-        $flower = Flower::find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->remove($id);
-
-        if (count($cart->items) > 0)
-            Session::put('cart', $cart);
-        else
-            Session::forget('cart');
-        return redirect()->back();
-    }
-
 }

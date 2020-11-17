@@ -29,7 +29,6 @@ Route::group(['middleware' => 'role:user'], function () {
     Route::get('/add-to-cart/{id}', 'CartController@addToCart')->name('flower.addToCart');
     Route::get('/shopping-cart', 'CartController@getShoppingCart')->name('flower.shoppingCart');
     Route::get('/shopping-cart/{id}', 'CartController@updateCart')->name('update.flower.shoppingCart');
-    Route::get('/shopping-cart/remove/{id}', 'CartController@removeItem')->name('update.flower.shoppingCart');
 
     //storing data to database
     Route::get('/checkout', 'TransacationController@getCheckout')->name('get.checkout');
@@ -66,7 +65,6 @@ Route::prefix('manager')->middleware('role:manager')->group(function () {
     Route::put('category/{id}/edit', 'CategoryFlowerController@update')->name('category.update');
     Route::delete('category/{id}', 'CategoryFlowerController@destroy')->name('category.delete');
 
-    //change password
     //change password
     Route::get('/reset-password', 'AuthController@getchangePassword')->name('manager.change.password');
     Route::post('/reset-password', 'AuthController@postchangePassword');

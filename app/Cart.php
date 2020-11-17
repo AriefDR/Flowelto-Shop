@@ -42,14 +42,9 @@ class Cart
             $this->totalPrice = ($this->totalPrice - $this->items[$id]['price']) + $item->flower_price * $qty;
             $this->items[$id]['price'] = $item->flower_price * $qty;
         } else {
+            $this->totalQty = $this->totalQty - $this->items[$id]['qty'];
+            $this->totalPrice = $this->totalPrice - $this->items[$id]['price'];
             unset($this->items[$id]);
         }
-    }
-
-    public function remove($id)
-    {
-        $this->totalQty = $this->totalQty - $this->items[$id]['qty'];
-        $this->totalPrice = $this->totalPrice - $this->items[$id]['price'];
-        unset($this->items[$id]);
     }
 }
