@@ -53,7 +53,7 @@ class TransacationController extends Controller
     public function getHistory()
     {
         $category = Category::all();
-        $transactions = Transaction::paginate(9);
+        $transactions = Transaction::where('user_id', Auth::user()->id)->paginate(9);
         return view('transactionhistory', compact('category', 'transactions'));
     }
 

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'UserController@getHome')->name('home');
-
 Route::middleware('guest')->group(function () {
     Route::get('/register', 'AuthController@getRegister')->name('register');
     Route::post('/register', 'AuthController@postRegister');
@@ -36,6 +35,10 @@ Route::group(['middleware' => 'role:user'], function () {
     Route::post('/checkout', 'TransacationController@postCheckout')->name('post.checkout');
     Route::get('/transaction-history', 'TransacationController@getHistory')->name('get.history');
     Route::get('/transaction-history/{id}', 'TransacationController@getDetailHistory')->name('get.detail.history');
+
+    //change password
+    Route::get('/change-password', 'AuthController@getchangePassword')->name('change.password');
+    Route::post('/change-password', 'AuthController@postchangePassword');
 });
 
 Route::get('/flower', 'FlowerController@search')->name('user.search');
@@ -61,4 +64,9 @@ Route::prefix('manager')->middleware('role:manager')->group(function () {
     Route::get('category/{id}/edit', 'CategoryFlowerController@edit')->name('category.edit');
     Route::put('category/{id}/edit', 'CategoryFlowerController@update')->name('category.update');
     Route::delete('category/{id}', 'CategoryFlowerController@destroy')->name('category.delete');
+
+    //change password
+    //change password
+    Route::get('/reset-password', 'AuthController@getchangePassword')->name('manager.change.password');
+    Route::post('/reset-password', 'AuthController@postchangePassword');
 });

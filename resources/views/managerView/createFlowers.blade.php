@@ -17,7 +17,7 @@
         @endif
     <div class="form-group ">
         <label for="flowerName">Flower Name</label>
-        <input type="text" class="form-control {{$errors->has('flowerName') ? 'is-invalid' : '' }}" id="flowerName" placeholder="Mawar" name="flowerName">
+    <input type="text" class="form-control {{$errors->has('flowerName') ? 'is-invalid' : '' }}" id="flowerName" placeholder="Mawar" name="flowerName" value="{{old('flowerName')}}">
         @if ($errors->has('flowerName'))
             <div class="invalid-feedback">
                 {{$errors->first('flowerName')}}
@@ -26,7 +26,7 @@
     </div>
     <div class="form-group ">
         <label for="flowerStock">Flower Stock</label>
-        <input  type="number" class="form-control {{$errors->has('flowerStock') ? 'is-invalid' : '' }}" name="flowerStock" id="flowerStock" placeholder="1">
+        <input  type="number" class="form-control {{$errors->has('flowerStock') ? 'is-invalid' : '' }}" name="flowerStock" id="flowerStock" placeholder="1" value="{{old('flowerStock')}}">
         @if ($errors->has('flowerStock'))
             <div class="invalid-feedback">
                 {{$errors->first('flowerStock')}}
@@ -35,7 +35,7 @@
     </div>
     <div class="form-group ">
         <label for="flowerPrice">Flower Price in Rp.</label>
-        <input type="number" class="form-control {{$errors->has('flowerPrice') ? 'is-invalid' : '' }}" name="flowerPrice" id="flowerPrice" placeholder="Rp. 1000000">
+        <input type="number" class="form-control {{$errors->has('flowerPrice') ? 'is-invalid' : '' }}" name="flowerPrice" id="flowerPrice" placeholder="Rp. 1000000" value="{{old('flowerPrice')}}">
         @if ($errors->has('flowerPrice'))
             <div class="invalid-feedback">
                 {{$errors->first('flowerPrice')}}
@@ -44,7 +44,7 @@
     </div>
     <div class="form-group">
         <label for="desFlower">Flower Description</label>
-        <textarea class="form-control {{$errors->has('desFlower') ? 'is-invalid' : '' }}" id="desFlower" rows="3" name="desFlower"></textarea>
+        <textarea class="form-control {{$errors->has('desFlower') ? 'is-invalid' : '' }}" id="desFlower" rows="3" name="desFlower">{{old('desFlower')}}</textarea>
         @if ($errors->has('desFlower'))
             <div class="invalid-feedback">
                 {{$errors->first('desFlower')}}

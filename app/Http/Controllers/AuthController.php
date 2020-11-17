@@ -7,6 +7,7 @@ use App\Category;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -64,6 +65,38 @@ class AuthController extends Controller
         $adrs->save();
 
         return redirect()->route('login');
+    }
+
+    public function getchangePassword()
+    {
+        if (Auth::user()->role == "manager")
+            return view('managerView.changePassword');
+        else {
+            $category = Category::all();
+            return view('changepassword', compact('category'));
+        }
+    }
+
+    public function postchangePassword(Request $request)
+    {
+        $request->validate([
+            'oldPass' => 'required|min:8',
+            'newPass' => 'required|min:8|confirmed'
+        ]);
+
+        if (!(Hash::check($request->oldPass, Auth::user()->password)))
+            return redirect()->back()->withErrors('Your Password Does Not Match with Your Current Password');
+        if (strcmp($request->oldPass, $request->newPass) == 0)
+            return redirect()->back()->withErrors('Your Current Password cannot be The Same with the New Password');
+
+        $user = Auth::user();
+        $user->password = bcrypt($request->newPass);
+        $user->save();
+
+        if (Auth::user()->role == "manager")
+            return redirect()->route('homeManager')->with('success', 'Password Changed Successfuly');
+        else
+            return redirect()->route('home')->with('success', 'Password Changed Successfuly');
     }
 
     public function logout()

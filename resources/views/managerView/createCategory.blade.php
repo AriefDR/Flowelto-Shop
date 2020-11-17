@@ -5,7 +5,7 @@
 <form action="" method="POST" enctype="multipart/form-data">
     <div class="form-group ">
         <label for="categoryName">Category Name</label>
-        <input type="text" class="form-control {{$errors->has('categoryName') ? 'is-invalid' : '' }}" id="categoryName" placeholder="ex: Fresh Flower" name="categoryName">
+        <input type="text" class="form-control {{$errors->has('categoryName') ? 'is-invalid' : '' }}" id="categoryName" placeholder="ex: Fresh Flower" name="categoryName" value="{{old('categoryName')}}">
         @if ($errors->has('categoryName'))
             <div class="invalid-feedback">
                 {{$errors->first('categoryName')}}
@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
         <label for="categoryImg">Category Image</label>
-        <input type="file" class="form-control-file {{$errors->has('categoryImg') ? 'is-invalid' : '' }}" id="categoryImg" name="categoryImg">
+        <input type="file" class="form-control-file {{$errors->has('categoryImg') ? 'is-invalid' : '' }}" id="categoryImg" name="categoryImg" value="{{old('categoryImg')}}">
         @if ($errors->has('categoryImg'))
             <div class="invalid-feedback">
                 {{$errors->first('categoryImg')}}

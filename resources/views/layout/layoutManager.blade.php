@@ -107,6 +107,12 @@
             </div>
           </li>
           <li>
+            <a href="{{route('manager.change.password')}}">
+                <i class="fas fa-key"></i>
+                <span>Change Password</span>
+              </a>
+            </li>
+          <li>
           <a href="{{route('logout')}}">
                 <i class="fas fa-power-off"></i>
               <span>Log Out</span>
@@ -138,9 +144,29 @@
 
         </footer>
     </div>
+    <footer>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-4">
+                    <h6>Customer Service</h6>
+                    <ul>
+                        <li>Contack Us</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6>Our Store</h6>
+                </div>
+                <div class="col-lg-4">
+                    <h6>FOLLOW US</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
   </main>
   <!-- page-content" -->
+
 </div>
+
 <!-- page-wrapper -->
     @section('js')
     <script src="{{asset('/js/jquery-3.5.1.min.js')}}"></script>

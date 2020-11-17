@@ -16,27 +16,38 @@
               </button>
           </div>
         @endif
-        <form action="{{route('login')}}" method="POST">
-            <div class="form-group">
-                <label>Email</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text"> <i class="fas fa-user"></i> </div>
-                    </div>
-                <input type="text" name="email" class="form-control" placeholder="Masukan email" autofocus>
+        <div class="container">
+            <div class="row justify-content-lg-center">
+                <div class="col col-lg-8">
+                    <form action="{{route('login')}}" method="POST">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <div class="input-group" >
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"> <i class="fas fa-user"></i> </div>
+                                </div>
+                            <input type="text" name="email" class="form-control" placeholder="Masukan email" autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"> <i class="fas fa-unlock-alt"></i> </div>
+                            </div>
+                            <input type="password" name="password" class="form-control" placeholder="Masukan Password Anda" autofocus>
+                            </div>
+                            <div class="ml-1 pt-3 custom-control custom-checkbox mb-3">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">Remember password</label>
+                            </div>
+                            @csrf
+                        </div>
+                        <button type="submit" class="btn btn-primary">SUBMIT</button> <a href="" class="ml-3 text-decoration-none">Forget Your Password ?</a>
+                    </form>
                 </div>
             </div>
-            <div class="form-group">
-                <label>Password</label>
-                <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text"> <i class="fas fa-unlock-alt"></i> </div>
-                </div>
-                <input type="password" name="password" class="form-control" placeholder="Masukan Password Anda" autofocus>
-                </div>
-                @csrf
-            </div>
-            <button type="submit" class="btn btn-primary">SUBMIT</button>
-        </form>
+        </div>
     </div>
+
 @endsection

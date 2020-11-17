@@ -13,7 +13,7 @@
         <form action="{{route('register')}}" method="POST">
             <div>
                 <label>Username</label>
-                <input type="text" name="username" class="form-control {{$errors->has('username') ? 'is-invalid' : '' }}" autofocus>
+            <input type="text" name="username" class="form-control {{$errors->has('username') ? 'is-invalid' : '' }}" autofocus value="{{old('username')}}">
                 @if ($errors->has('username'))
                     <div class="invalid-feedback">
                         {{$errors->first('username')}}
@@ -22,7 +22,7 @@
             </div>
             <div>
                 <label>Email Address</label>
-                <input type="text" name="email" class="form-control {{$errors->has('email') ? 'is-invalid' : '' }}" autofocus>
+                <input type="text" name="email" class="form-control {{$errors->has('email') ? 'is-invalid' : '' }}" autofocus value="{{old('email')}}">
                 @if ($errors->has('email'))
                     <div class="invalid-feedback">
                         {{$errors->first('email')}}
@@ -70,7 +70,7 @@
             </div>
             <div>
                 <label>Phone Number</label>
-                <input type="tel" class="form-control {{$errors->has('phone') ? 'is-invalid' : '' }}" name="phone" placeholder="08**-****-****" autofocus>
+                <input type="tel" class="form-control {{$errors->has('phone') ? 'is-invalid' : '' }}" name="phone" placeholder="08**-****-****" autofocus value="{{old('phone')}}">
                 @if ($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{$errors->first('phone')}}
@@ -79,7 +79,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Address</label>
-                <textarea  name="address" class="form-control {{$errors->has('address') ? 'is-invalid' : '' }}" rows="3"></textarea>
+            <textarea  name="address" class="form-control {{$errors->has('address') ? 'is-invalid' : '' }}" rows="3">{{old('address')}}</textarea>
                 @if ($errors->has('address'))
                     <div class="invalid-feedback">
                         {{$errors->first('address')}}

@@ -2,6 +2,11 @@
 @section('title','Welcome Home | Manager ')
 @section('judulHeader','Welcome To Dahboard Manager')
 @section('content')
+@if(session()->has('success'))
+    <script>
+        alert('{{session()->get('success')}}');
+    </script>
+@endif
 <div class="row justify-content-md-center">
     <div class="col-sm-4">
         <div class="card-counter primary">
