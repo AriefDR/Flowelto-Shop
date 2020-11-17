@@ -17,8 +17,12 @@ class UserController extends Controller
         else if (Auth::user()->role == "user")
             return view('index', compact('flowers', 'category'));
         else
-            return redirect('/manager/home');
+            return redirect()->route('homeManager');
     }
 
-
+    public function aboutUs()
+    {
+        $category = Category::all();
+        return view('aboutus', compact('category'));
+    }
 }

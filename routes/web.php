@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'UserController@getHome')->name('home');
+
 Route::middleware('guest')->group(function () {
     Route::get('/register', 'AuthController@getRegister')->name('register');
     Route::post('/register', 'AuthController@postRegister');
@@ -40,7 +41,7 @@ Route::group(['middleware' => 'role:user'], function () {
     Route::get('/change-password', 'AuthController@getchangePassword')->name('change.password');
     Route::post('/change-password', 'AuthController@postchangePassword');
 });
-
+Route::get('/about-us', 'UserController@aboutUs')->name('aboutUs');
 Route::get('/flower', 'FlowerController@search')->name('user.search');
 Route::get('/category/{category}', 'CategoryFlowerController@searchCategory')->name('user.searchCategory');
 Route::get('/{slug}', 'FlowerController@show')->name('userflower.show');

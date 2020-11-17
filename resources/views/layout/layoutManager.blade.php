@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{{asset('/css/homeManager.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     @show
-
 </head>
 
 <body>
@@ -144,24 +143,6 @@
 
         </footer>
     </div>
-    <footer>
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-4">
-                    <h6>Customer Service</h6>
-                    <ul>
-                        <li>Contack Us</li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <h6>Our Store</h6>
-                </div>
-                <div class="col-lg-4">
-                    <h6>FOLLOW US</h6>
-                </div>
-            </div>
-        </div>
-    </footer>
   </main>
   <!-- page-content" -->
 

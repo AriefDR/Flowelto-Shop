@@ -72,6 +72,11 @@
                 padding-left: 25px;
                 margin-top: 40px;
             }
+
+            .list-item{
+                list-style: none;
+                margin: 3px 5px;
+            }
         </style>
     </head>
     <body>
@@ -139,9 +144,15 @@
             </div>
         </div>
     </nav>
-
-    @yield('container')
-
+    <div style="min-height: 90vh">
+        @yield('container')
+    </div>
+<footer class="bg-dark text-white">
+    <div class="footer-copyright text-center py-3" style="margin-top: 10px;">
+        <h6 class="d-inline">© 2020 Copyright |</h6>
+        <h6 class="d-inline">Flowelto Shop</h6>
+    </div>
+  </footer>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
