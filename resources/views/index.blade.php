@@ -72,12 +72,7 @@
         </div>
         @endfor
       </div>
-
-      <br><br>
-      <div class="text-center">
-        <button type="button" class="btn btn-info btn-lg text-white">VIEW ALL NEW PRODUCTS</button>
-      </div>
-      <br><br><br><br><br><br>
+      <br><br><br>
     <h4 class="text-center font-weight-bold m-4">{{$category[0]->category_name}}</h4>
       <div class="row mx-auto mt-5">
         @php
@@ -106,9 +101,38 @@
         @endif
         @endforeach
       </div>
+      <br><br><br>
+      <h4 class="text-center font-weight-bold m-4">{{$category[1]->category_name}}</h4>
+      <div class="row mx-auto mt-5">
+        @php
+            $i = 1;
+        @endphp
+        @foreach ($flowers as $flct)
+        @if($flct->category_id == $category[1]->id)
+        <div class="col-lg-6">
+            <div class="card " style="height: 33rem; max-width: 20rem;">
+                <a href="{{url('/'.$flct->slug)}}">
+                <img src="{{asset('/storage/flower/'.$flct->flower_img)}}" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body bg-white">
+                <h5 class="card-title">{{$flct->flower_name}}</h5>
+                  <p class="card-text">{{substr($flct->flower_description,0,100)}}.</p>
+                </div>
+                <div class="card-footer">
+
+                </div>
+              </div>
+        </div>
+        @php
+            $i++;
+            if($i == 4) break;
+        @endphp
+        @endif
+        @endforeach
+      </div>
       <br><br>
       <div class="text-center">
-        <button type="button" class="btn btn-info btn-lg text-white">VIEW ALL FRESH FLOWERS</button>
+        <a href="{{url('/category/'. $category[1]->slug)}}" class="btn btn-info btn-lg text-white">VIEW ALL BOQUET</a>
       </div>
     </div>
 

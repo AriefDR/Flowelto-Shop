@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use PhpParser\Node\Expr\Empty_;
 
 class AuthController extends Controller
 {
@@ -24,8 +25,8 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        $remember = $request->input('remember');
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             return redirect()->intended('/manager/home');
         }
         return redirect()->back()->withErrors('Email and Password doesnt match');

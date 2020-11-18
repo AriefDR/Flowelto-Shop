@@ -38,7 +38,7 @@
                             <input type="password" name="password" class="form-control" placeholder="Masukan Password Anda" autofocus>
                             </div>
                             <div class="ml-1 pt-3 custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1" name="remember">
                                 <label class="custom-control-label" for="customCheck1">Remember password</label>
                             </div>
                             @csrf
