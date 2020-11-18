@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Flower;
+use App\Transaction;
 use App\User;
 
 class ManagerController extends Controller
@@ -12,6 +13,7 @@ class ManagerController extends Controller
         $userCount = User::all()->count();
         $flowers = Flower::all();
         $countData = Flower::all()->count();
-        return view('managerView.homeManager', compact('flowers', 'countData', 'userCount'));
+        $countTR = Transaction::all()->count();
+        return view('managerView.homeManager', compact('flowers', 'countData', 'userCount', 'countTR'));
     }
 }

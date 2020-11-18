@@ -61,7 +61,7 @@
             </div>
             <div>
                 <label>Date Of Birth</label>
-                <input type="date" name="dob" class="form-control {{$errors->has('dob') ? 'is-invalid' : '' }}">
+                <input type="date" name="dob" class="form-control {{$errors->has('dob') ? 'is-invalid' : '' }}" value="{{old('dob')}}">
                 @if ($errors->has('dob'))
                     <div class="invalid-feedback">
                         {{$errors->first('dob')}}

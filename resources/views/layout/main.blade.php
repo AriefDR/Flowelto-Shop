@@ -124,7 +124,7 @@
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white"  id="drProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{strtoupper(Auth::user()->role)}}</a>
                     <div class="dropdown-menu" aria-labelledby="drProfile">
-                        <a class="dropdown-item" href="{{route('flower.shoppingCart')}}">MyChart <span class="badge badge-info">{{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}</span> </a>
+                        <a class="dropdown-item" href="{{route('flower.shoppingCart')}}">MyCart <span class="badge badge-info">{{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{route('get.history')}}">Transaction History</a>
                         <div class="dropdown-divider"></div>

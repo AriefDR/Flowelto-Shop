@@ -25,7 +25,7 @@
     <div class="col-sm-4">
         <div class="card-counter success">
             <i class="fas fa-shopping-cart"></i>
-            <span class="count-numbers">120k</span>
+            <span class="count-numbers">{{$countTR}}</span>
             <span class="count-name">Transactions</span>
         </div>
     </div>

@@ -7,38 +7,36 @@
 <br><br><br>
     <div class="container">
         <div class="row">
-            <div class="col-lg-2">
-                <div class="card" style="width: 10rem;">
-                    <div class="card-header">
-                     Category
-                    </div>
-                    <ul class="list-group list-group-flush">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Choose category : </li>
                         @foreach ($category as $ctg)
-                            <a href="{{url('/category/'. $ctg->slug)}}" class="text-decoration-none"><li class="list-group-item">{{$ctg->category_name}}</li></a>
+                            <li class="breadcrumb-item"><a href="{{url('/category/'. $ctg->slug)}}" class="text-decoration-none"> {{$ctg->category_name}}</a></li>
                         @endforeach
-                    </ul>
-                  </div>
+                    </ol>
+                </nav>
             </div>
-            <div class="col-lg-10">
-                <div class="row">
-                    @foreach ($flowers as $flower)
-                    <div class="col-lg-4" style="margin:10px 0;">
-                        <div class="card-group">
-                            <div class="card" style="height:31rem;">
-                                <a href="{{url('/'.$flower->slug)}}">
-                                <img class="card-img-top" src="{{asset('storage/flower/' . $flower->flower_img)}}" alt="Card image cap">
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{$flower->flower_name}}</h5>
-                                    <p class="card-text">{{substr($flower->flower_description,0,150)}}</p>
-                                </div>
-                            </div>
+        </div>
+        <div class="row">
+            @foreach ($flowers as $flower)
+            <div class="col-lg-3" style="margin:10px 0;">
+                <div class="card-group">
+                    <div class="card" style="min-height:31rem;">
+                        <a href="{{url('/'.$flower->slug)}}">
+                        <div class="text-center">
+                            <img class="card-img-top" src="{{asset('storage/flower/' . $flower->flower_img)}}" alt="Card image cap">
+                        </div>
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{$flower->flower_name}}</h5>
+                            <p class="card-text">{{substr($flower->flower_description,0,150)}}</p>
                         </div>
                     </div>
-                @endforeach
                 </div>
             </div>
-
+        @endforeach
         </div>
+        {{$flowers->links()}}
     </div>
 @endsection

@@ -23,21 +23,21 @@ class FlowerController extends Controller
     {
         $category = Category::all();
         $search_q = $request->input('search');
-        $flowers = Flower::all();
+        $flowers = Flower::paginate(8);
 
         if (Auth::user() && Auth::user()->role == "manager") {
             if (!empty($search_q))
                 $flowers = Flower::where('flower_name', 'like', '%' . $search_q . '%')
                     ->orWhereHas('category', function ($query) use ($search_q) {
                         $query->where('category_name', 'like', '%' . $search_q . '%');
-                    })->get();
+                    })->paginate(8);
             return view('managerView.searchManager', compact('flowers', 'category'));
         } else if (!Auth::user() || Auth::user()->role == "user") {
             if (!empty($search_q))
                 $flowers = Flower::where('flower_name', 'like', '%' . $search_q . '%')
                     ->orWhereHas('category', function ($query) use ($search_q) {
                         $query->where('category_name', 'like', '%' . $search_q . '%');
-                    })->get();
+                    })->paginate(8);
             return view('search', compact('flowers', 'category'));
         }
     }

@@ -43,11 +43,16 @@
                             </div>
                             @csrf
                         </div>
-                        <button type="submit" class="btn btn-primary">SUBMIT</button> <a href="" class="ml-3 text-decoration-none">Forget Your Password ?</a>
+                        <button type="submit" class="btn btn-primary">SUBMIT</button> <a href="" onclick="msgAlert()" class="ml-3 text-decoration-none">Forget Your Password ?</a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
+
+<script>
+    function msgAlert(){
+        alert ('Please Contact Your Manager to Reset Your Password');
+    }
+</script>

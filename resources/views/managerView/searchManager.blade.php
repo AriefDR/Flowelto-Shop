@@ -36,4 +36,5 @@
     </div>
 @endforeach
 </div>
+{{$flowers->links()}}
 @endsection
