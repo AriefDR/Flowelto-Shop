@@ -80,14 +80,13 @@ class AuthController extends Controller
     public function postchangePassword(Request $request)
     {
         $request->validate([
-            'oldPass' => 'required|min:8',
             'newPass' => 'required|min:8|confirmed'
         ]);
 
         if (!(Hash::check($request->oldPass, Auth::user()->password)))
-            return redirect()->back()->withErrors('Your Password Does Not Match with Your Current Password');
+            return back()->withErrors(['asu', 'Your Password Does Not Match with Your Current Password']);
         if (strcmp($request->oldPass, $request->newPass) == 0)
-            return redirect()->back()->withErrors('Your Current Password cannot be The Same with the New Password');
+            return back()->withErrors('Your Current Password cannot be The Same with the New Password');
 
         $user = Auth::user();
         $user->password = bcrypt($request->newPass);
