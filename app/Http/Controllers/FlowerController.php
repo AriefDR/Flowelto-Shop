@@ -118,7 +118,7 @@ class FlowerController extends Controller
 
         if ($request->hasFile('flowerImg')) {
             $filename = time() . Hash::make($request->file('flowerImg')->getClientOriginalName()) . '.' . $request->file('flowerImg')->extension();
-            $request->file('flowerImg')->storeAs('public/img', $filename);
+            $request->file('flowerImg')->storeAs('public/flower', $filename);
             $flowers->flower_img = $filename;
         } else {
             $flowers->flower_img = $flowers->flower_img;

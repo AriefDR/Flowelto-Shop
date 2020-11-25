@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Route;
 
 /*

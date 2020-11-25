@@ -22,7 +22,7 @@
               <h1 class="display-4">Make Life Happy With <br> <span class="font-weight-bold">Flowelto Shop</span></h1>
               <hr class="my-4">
               <p class="lead">Toko Bunga Berkualitas Dengan Harga Terjangkau</p>
-              <a class="btn btn-primary btn-lg font-weight-bold" href="/about" role="button">LEARN MORE</a>
+              <a class="btn btn-primary btn-lg font-weight-bold" href="#newProducts" role="button">LEARN MORE</a>
             </div>
           </div>
           <div class="carousel-item">
@@ -31,7 +31,7 @@
               <h1 class="display-4">Mengapa Harus Berbelanja Di <br> <span class="font-weight-bold">Flowelto Shop?</span></h1>
               <hr class="my-4">
               <p class="lead">Karena Kami Selalu Merawat Dan Memastikan Bunga Tetap Indah Sebelum Sampai Ke Tempat Anda</p>
-              <a class="btn btn-primary btn-lg font-weight-bold" href="#" role="button">SEE OUR FEATURED FLOWERS</a>
+              <a class="btn btn-primary btn-lg font-weight-bold"  href="#categoryShop" role="button">SEE OUR FEATURED FLOWERS</a>
             </div>
           </div>
           <div class="carousel-item">
@@ -52,11 +52,10 @@
           <span class="sr-only">Next</span>
         </a>
     </div>
-
-    <br><br>
-    <h4 class="text-center font-weight-bold m-4">NEW PRODUCTS</h4>
-
-    <div class="container">
+    <br id="newProducts"><br>
+    <h3 class="text-center font-weight-bold m-4 text-uppercase">NEW PRODUCTS</h3>
+    <br>
+    <div class="container" >
     <div class="row mx-auto">
         @for($i=(count($flowers)); $i>(count($flowers)-3); $i--)
         <div class="col-lg-4">
@@ -73,14 +72,14 @@
         @endfor
       </div>
       <br><br><br>
-    <h4 class="text-center font-weight-bold m-4">{{$category[0]->category_name}}</h4>
+    <h3 class="text-center font-weight-bold m-4 text-uppercase">{{$category[0]->category_name}}</h3>
       <div class="row mx-auto mt-5">
         @php
             $i = 1;
         @endphp
         @foreach ($flowers as $flct)
         @if($flct->category_id == $category[0]->id)
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="card " style="height: 33rem; max-width: 20rem;">
                 <a href="{{url('/'.$flct->slug)}}">
                 <img src="{{asset('/storage/flower/'.$flct->flower_img)}}" class="card-img-top" alt="...">
@@ -95,21 +94,24 @@
               </div>
         </div>
         @php
+            if($i == 3) break;
             $i++;
-            if($i == 4) break;
         @endphp
         @endif
         @endforeach
       </div>
-      <br><br><br>
-      <h4 class="text-center font-weight-bold m-4">{{$category[1]->category_name}}</h4>
+      <div class="text-center">
+        <a href="{{url('/category/'. $category[0]->slug)}}" class="btn btn-info btn-lg text-white text-uppercase">VIEW ALL {{$category[0]->category_name}}</a>
+      </div>
+      <br><br>
+      <h3 class="text-center font-weight-bold m-4 text-uppercase">{{$category[1]->category_name}}</h3>
       <div class="row mx-auto mt-5">
         @php
             $i = 1;
         @endphp
         @foreach ($flowers as $flct)
         @if($flct->category_id == $category[1]->id)
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="card " style="height: 33rem; max-width: 20rem;">
                 <a href="{{url('/'.$flct->slug)}}">
                 <img src="{{asset('/storage/flower/'.$flct->flower_img)}}" class="card-img-top" alt="...">
@@ -124,16 +126,35 @@
               </div>
         </div>
         @php
+            if($i == 3) break;
             $i++;
-            if($i == 4) break;
         @endphp
         @endif
         @endforeach
       </div>
-      <br><br>
       <div class="text-center">
-        <a href="{{url('/category/'. $category[1]->slug)}}" class="btn btn-info btn-lg text-white">VIEW ALL BOQUET</a>
+        <a href="{{url('/category/'. $category[1]->slug)}}" class="btn btn-info btn-lg text-white text-uppercase">VIEW ALL {{$category[1]->category_name}}</a>
       </div>
+    </div>
+    <br id="categoryShop"><br><br>
+    <div class="container">
+        <h3 class="font-weight-bold text-center text-uppercase" style="margin-bottom: 30px">SHOP BY CATEGORY</h3>
+        <div class="row">
+            @foreach ($category as $ctg)
+                <div class="col-sm-3 mt-5">
+                    <a href="{{url('/category/'. $ctg->slug)}}"  class="text-decoration-none text-dark">
+                        <div class="kotak">
+                            <div class="img-hover-zoom text-center">
+                                <img class="rounded-circle" src="{{asset('storage/category/'.$ctg->category_img)}}" alt="Card image cap" width="180">
+                            </div>
+                            <div class="namaCategory">
+                                <h6 class="text-center font-weight-bold">{{$ctg->category_name}}</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
     </div>
 
     <br><br><br><br><br><br><br>

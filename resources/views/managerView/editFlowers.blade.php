@@ -2,7 +2,7 @@
 @section('title','Welcome Home | Update Data Flower ')
 @section('judulHeader','Please Update Data Flower ')
 @section('content')
-<form action="/manager/flower/{{$flower->id}}/edit" method="POST" enctype="multipart/form-data">
+<form action="{{url('/manager/flower/'. $flower->id.'/edit')}}" method="POST" enctype="multipart/form-data">
     <label for="category">Category</label>
     <select class="custom-select {{$errors->has('category') ? 'is-invalid' : '' }}" name="category">
         <option value="">---</option>

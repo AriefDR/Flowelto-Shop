@@ -21,7 +21,7 @@ class CategoryFlowerController extends Controller
         $category = Category::all();
         $flowers = Flower::with('category')->whereHas('category', function ($query) use ($asdas) {
             $query->where('slug', $asdas);
-        })->get();
+        })->paginate(8);
         return view('search', compact('flowers', 'category'));
     }
 

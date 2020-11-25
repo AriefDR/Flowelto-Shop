@@ -2,7 +2,7 @@
 @section('title','Welcome Home | Update Data Category ')
 @section('judulHeader','Please Update Data Category ')
 @section('content')
-<form action="/manager/category/{{$category->id}}/edit" method="POST" enctype="multipart/form-data">
+<form action="{{url('/manager/category/.$category->id}}.'/edit')}}" method="POST" enctype="multipart/form-data">
     <div class="form-group ">
         <label for="categoryName">Category Name</label>
     <input type="text" class="form-control {{$errors->has('categoryName') ? 'is-invalid' : '' }}" id="categoryName" placeholder="ex: Fresh Flower" name="categoryName" value="{{$category->category_name}}">
