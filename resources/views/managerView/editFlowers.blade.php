@@ -7,62 +7,57 @@
     <select class="custom-select {{$errors->has('category') ? 'is-invalid' : '' }}" name="category">
         <option value="">---</option>
         @foreach ($category as $ctg)
-        <option
-            @if($ctg->id == $flower->category_id)
-                selected
+        <option @if($ctg->id == $flower->category_id)
+            selected
             @endif
             value="{{$ctg->id}}">{{$ctg->category_name}}</option>
         @endforeach
     </select>
-        @if ($errors->has('category'))
-            <div class="invalid-feedback">
-                {{$errors->first('category')}}
-            </div>
-        @endif
+    @if ($errors->has('category'))
+    <div class="invalid-feedback">
+        {{$errors->first('category')}}
+    </div>
+    @endif
     <div class="form-group ">
         <label for="flowerName">Flower Name</label>
-    <input type="text" class="form-control {{$errors->has('flowerName') ? 'is-invalid' : '' }}" id="flowerName" placeholder="Mawar" name="flowerName" value="{{$flower->flower_name}}">
+        <input type="text" class="form-control {{$errors->has('flowerName') ? 'is-invalid' : '' }}" id="flowerName"
+            placeholder="Mawar" name="flowerName" value="{{$flower->flower_name}}">
         @if ($errors->has('flowerName'))
-            <div class="invalid-feedback">
-                {{$errors->first('flowerName')}}
-            </div>
-        @endif
-    </div>
-    <div class="form-group ">
-        <label for="flowerStock">Flower Stock</label>
-    <input  type="number" class="form-control {{$errors->has('flowerStock') ? 'is-invalid' : '' }}" name="flowerStock" id="flowerStock" placeholder="1" value="{{$flower->stock}}">
-        @if ($errors->has('flowerStock'))
-            <div class="invalid-feedback">
-                {{$errors->first('flowerStock')}}
-            </div>
+        <div class="invalid-feedback">
+            {{$errors->first('flowerName')}}
+        </div>
         @endif
     </div>
     <div class="form-group ">
         <label for="flowerPrice">Flower Price in Rp.</label>
-    <input name="flowerPrice" type="number" class="form-control {{$errors->has('flowerPrice') ? 'is-invalid' : '' }}" name="flowerPrice" id="flowerPrice" placeholder=" ex: Rp. 1000000" value="{{$flower->flower_price}}">
+        <input name="flowerPrice" type="number"
+            class="form-control {{$errors->has('flowerPrice') ? 'is-invalid' : '' }}" name="flowerPrice"
+            id="flowerPrice" placeholder=" ex: Rp. 1000000" value="{{$flower->flower_price}}">
         @if ($errors->has('flowerPrice'))
-            <div class="invalid-feedback">
-                {{$errors->first('flowerPrice')}}
-            </div>
+        <div class="invalid-feedback">
+            {{$errors->first('flowerPrice')}}
+        </div>
         @endif
     </div>
     <div class="form-group">
         <label for="desFlower">Flower Description</label>
-    <textarea class="form-control {{$errors->has('desFlower') ? 'is-invalid' : '' }}" id="desFlower" rows="3" name="desFlower">{{$flower->flower_description}}</textarea>
+        <textarea class="form-control {{$errors->has('desFlower') ? 'is-invalid' : '' }}" id="desFlower" rows="3"
+            name="desFlower">{{$flower->flower_description}}</textarea>
         @if ($errors->has('desFlower'))
-            <div class="invalid-feedback">
-                {{$errors->first('desFlower')}}
-            </div>
+        <div class="invalid-feedback">
+            {{$errors->first('desFlower')}}
+        </div>
         @endif
     </div>
     <div class="form-group">
         <label for="flowerImg">Flower Image</label>
-    <input type="file" class="form-control-file {{$errors->has('flowerImg') ? 'is-invalid' : '' }}" id="flowerImg" name="flowerImg" >
+        <input type="file" class="form-control-file {{$errors->has('flowerImg') ? 'is-invalid' : '' }}" id="flowerImg"
+            name="flowerImg">
 
         @if ($errors->has('flowerImg'))
-            <div class="invalid-feedback">
-                {{$errors->first('flowerImg')}}
-            </div>
+        <div class="invalid-feedback">
+            {{$errors->first('flowerImg')}}
+        </div>
         @endif
     </div>
     <input type="hidden" name="_method" value="PUT">

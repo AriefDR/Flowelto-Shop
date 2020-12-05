@@ -33,16 +33,13 @@ class CartController extends Controller
         ]);
         $valQty = $request->input('valQty');
         $flower = Flower::find($id);
-        if ($valQty > $flower->stock)
-            return redirect()->back()->withErrors('opps the amount of interest is less than you desire ');
-        else {
-            $oldCart = Session::has('cart') ?  Session::get('cart') : null;
-            $cart = new Cart($oldCart);
-            $cart->add($flower, $flower->id, $valQty);
 
-            $request->session()->put('cart', $cart);
-            return redirect()->back()->with('success', 'item added to cart');
-        }
+        $oldCart = Session::has('cart') ?  Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($flower, $flower->id, $valQty);
+
+        $request->session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'item added to cart');
     }
 
     public function updateCart(Request $request, $id)
@@ -52,18 +49,14 @@ class CartController extends Controller
         ]);
         $valQty = $request->input('valQty');
         $flower = Flower::find($id);
-        if ($valQty > $flower->stock)
-            return redirect()->back()->withErrors('ops Insufficient stock of ' . $flower->flower_name);
-        else {
-            $oldCart = Session::has('cart') ? Session::get('cart') : null;
-            $cart = new Cart($oldCart);
-            $cart->update($flower, $flower->id, $valQty);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->update($flower, $flower->id, $valQty);
 
-            if (count($cart->items) > 0)
-                $request->session()->put('cart', $cart);
-            else
-                Session::forget('cart');
-            return redirect()->back();
-        }
+        if (count($cart->items) > 0)
+            $request->session()->put('cart', $cart);
+        else
+            Session::forget('cart');
+        return redirect()->back();
     }
 }

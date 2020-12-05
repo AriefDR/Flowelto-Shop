@@ -6,6 +6,7 @@
 <br><br><br>
 <div class="container">
     @if(Session::has('cart'))
+    <h1 class="text-center">Shopping Cart</h1>
         @foreach ($flowers as $flower)
             <div class="row" style="margin: 10px 0; border: 1px solid grey; height: 12rem;">
                 <div class="col-lg-3">
@@ -21,7 +22,7 @@
                     <form action="{{url('/shopping-cart/'. $flower['item']['id'])}}" method="get">
                         <div class="form-group">
                             <div class="input-group mb-3">
-                                <input type="number" class="form-control {{$errors->any() ? 'is-invalid' : '' }}" min="0" value="{{ $flower['qty'] }}" name="valQty">
+                                <input type="number" class="form-control {{$errors->any() ? 'is-invalid' : '' }}" value="{{ $flower['qty'] }}" name="valQty">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">Update</button>
                                 </div>

@@ -43,19 +43,31 @@ class CategoryFlowersTableSeeder extends Seeder
 
             ],
             [
-                'category_name' => 'Acrylic Blossom Box',
-                'slug' => Str::slug('Acrylic Blossom Box', '-'),
-                'category_img' => '1603867892$2y$10$CUDvw.eiRZYrtsVMotBKc.eHBXw1WiKLcpj335XYix75LCkbKcO5K.jpeg',
-                'created_at' => '2020-10-04 16:40:00'
+                'category_name' => 'Christmas Boquete',
+                'slug' => Str::slug('Christmas Boquete', '-'),
+                'category_img' => '1607046080$2y$10$voAiTZOEDQtcwCp8iO176e8K1L01DpOCRAdK1yXZ.iijRxBXwBVie.jpeg',
+                'created_at' => '2020-12-03 08:20:00'
 
             ],
             [
-                'category_name' => 'New Flower',
-                'slug' => Str::slug('New Flower', '-'),
-                'category_img' => '1603867950$2y$10$0hfwMa.EFuyvhOIg6K.aoeuv7N9ew1pgNdyVPY7RVtWlOWv4wBAke.jpeg',
-                'created_at' => '2020-10-04 16:50:00'
+                'category_name' => 'Sun Flowers',
+                'slug' => Str::slug('Sun Flowers', '-'),
+                'category_img' => '1607046205$2y$10$GABXA9jIKpEHAHzVTG1MLOcH8UGVRvvwYaBBJJwnlZPIlSo5L47Wq.jpeg',
+                'created_at' => '2020-12-03 09:10:00'
 
-            ]
+            ],
+            [
+                'category_name' => 'Orchids Flowers',
+                'slug' => Str::slug('Orchids Flowers', '-'),
+                'category_img' => '1607046278$2y$10$ICDoeKd37FuG9BceU53elO2yb5VvU.HKhIUiTQVgIeffvl8MZbPb6.jpeg',
+                'created_at' => '2020-12-03 08:30:00'
+            ],
+            [
+                'category_name' => 'Tulip Flowers',
+                'slug' => Str::slug('Tulip Flowers', '-'),
+                'category_img' => '1607046649$2y$10$PXBynrI6.2dtov90rB4II.IwseS5EIg7E6zT4yhGs5sl1Q1qV1TsK.jpeg',
+                'created_at' => '2020-12-03 08:30:00'
+            ],
         ]);
     }
 }

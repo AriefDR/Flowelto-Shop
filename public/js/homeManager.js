@@ -8,7 +8,7 @@ function showTime() {
     var bulan= today.getMonth ();
     var tanggal= today.getDate ();
     var hariarray=new Array("Sunday,","Monday,","Tuesday,","Wednesday,","Thursday,","Friday,","Saturday,");
-    var bulanarray=new Array("January","February","March","April","May","June","July","August","September","October","Nopember","Desember");
+    var bulanarray=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
     document.getElementById("datetime").innerHTML = hariarray[hari]+" "+tanggal+" "+bulanarray[bulan]+" "+tahun;
 }
 showTime()

@@ -64,7 +64,7 @@ class AuthController extends Controller
         $user->address()->save($adrs);
         $adrs->save();
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Your Account has Been Created');
     }
 
     public function getchangePassword()
@@ -84,9 +84,9 @@ class AuthController extends Controller
         ]);
 
         if (!(Hash::check($request->oldPass, Auth::user()->password)))
-            return back()->withErrors(['asu', 'Your Password Does Not Match with Your Current Password']);
+            return back()->withErrors(['Your Current Password is Does Not Match']);
         if (strcmp($request->oldPass, $request->newPass) == 0)
-            return back()->withErrors('Your Current Password cannot be The Same with the New Password');
+            return back()->withErrors('Your New Password cannot be The Same with the Current Password');
 
         $user = Auth::user();
         $user->password = bcrypt($request->newPass);

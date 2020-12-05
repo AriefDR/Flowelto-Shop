@@ -43,7 +43,7 @@ class CategoryFlowerController extends Controller
 
         if ($request->has('categoryImg')) {
             $filename = time() . Hash::make($request->file('categoryImg')->getClientOriginalName()) . '.' . $request->file('categoryImg')->extension();
-            $request->file('categoryImg')->storeAs('public/category', $filename);
+            $request->file('categoryImg')->storeAs('category', $filename, 'public');
             $category->category_img = $filename;
         }
 
@@ -70,7 +70,7 @@ class CategoryFlowerController extends Controller
 
         if ($request->has('categoryImg')) {
             $filename = time() . Hash::make($request->file('categoryImg')->getClientOriginalName()) . '.' . $request->file('categoryImg')->extension();
-            $request->file('categoryImg')->storeAs('public/category', $filename);
+            $request->file('categoryImg')->storeAs('category', $filename, 'public');
             $category->category_img = $filename;
         }
 

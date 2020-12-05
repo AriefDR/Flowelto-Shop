@@ -47,12 +47,13 @@
                     @for($j=$countData; $j>($countData-6); $j--)
                     <div class="col-md-4">
                         <div class="card-group">
-                            <div class="card" style="height:33rem;">
+                            <div class="card" style="height:34rem;">
                                 <a href="{{url('/manager/flower/'.$flowers[$j-1]->slug)}}">
-                                <img class="card-img-top" src="{{asset('storage/flower/' . $flowers[$j-1]->flower_img)}}" alt="Card image cap">
+                                <img class="card-img-top" src="{{asset('storage/flower/' . $flowers[$j-1]->flower_img)}}" alt="Card image cap" height="300">
                                 </a>
                               <div class="card-body">
                                 <h5 class="card-title">{{$flowers[$j-1]->flower_name}}</h5>
+                                <p class="card-text" style="color:blue">Rp.{{$flowers[$j-1]->flower_price}}</p>
                                 <p class="card-text">{{substr($flowers[$j-1]->flower_description,0,150)}}</p>
                               </div>
                             </div>
@@ -60,7 +61,7 @@
                     </div>
                     @php
                         if($j == ($countData-2)){
-                            $countData -= 2;
+                            $countData -= 3;
                             break;
                         }
                     @endphp

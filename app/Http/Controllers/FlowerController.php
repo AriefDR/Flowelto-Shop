@@ -15,7 +15,7 @@ class FlowerController extends Controller
 
     public function index()
     {
-        $flowers = Flower::all();
+        $flowers = Flower::paginate(8);
         return view('managerView.indexFlowers', compact('flowers'));
     }
 
@@ -28,6 +28,7 @@ class FlowerController extends Controller
         if (Auth::user() && Auth::user()->role == "manager") {
             if (!empty($search_q))
                 $flowers = Flower::where('flower_name', 'like', '%' . $search_q . '%')
+                    ->orWhere('flower_price', 'like', '%' . $search_q . '%')
                     ->orWhereHas('category', function ($query) use ($search_q) {
                         $query->where('category_name', 'like', '%' . $search_q . '%');
                     })->paginate(8);
@@ -35,6 +36,7 @@ class FlowerController extends Controller
         } else if (!Auth::user() || Auth::user()->role == "user") {
             if (!empty($search_q))
                 $flowers = Flower::where('flower_name', 'like', '%' . $search_q . '%')
+                    ->orWhere('flower_price', 'like', '%' . $search_q . '%')
                     ->orWhereHas('category', function ($query) use ($search_q) {
                         $query->where('category_name', 'like', '%' . $search_q . '%');
                     })->paginate(8);
@@ -54,21 +56,19 @@ class FlowerController extends Controller
         $request->validate([
             'category' => 'required|numeric',
             'flowerName' => 'required|min:5|unique:flowers,flower_name',
-            'flowerStock' => 'required|integer|min:1',
             'flowerPrice' => 'required|integer|min:50000',
             'desFlower' => 'required|min:20',
             'flowerImg' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         $filename = time() . Hash::make($request->file('flowerImg')->getClientOriginalName()) . '.' . $request->file('flowerImg')->extension();
-        $request->file('flowerImg')->storeAs('public/flower', $filename);
+        $request->file('flowerImg')->storeAs('flower', $filename, 'public');
 
         $slug = Str::slug($request->flowerName, '-');
 
         $flowers = new Flower;
         $flowers->flower_name = $request->flowerName;
         $flowers->slug = $slug;
-        $flowers->stock = $request->flowerStock;
         $flowers->flower_description = $request->desFlower;
         $flowers->category_id = $request->category;
         $flowers->flower_price = $request->flowerPrice;
@@ -104,21 +104,19 @@ class FlowerController extends Controller
 
         $request->validate([
             'category' => 'required|numeric',
-            'flowerName' => 'required|min:5|unique:flowers,flower_name',
-            'flowerStock' => 'required|integer|min:1',
+            'flowerName' => 'sometimes|required|min:5|unique:flowers,flower_name',
             'flowerPrice' => 'required|integer|min:50000',
             'desFlower' => 'required|min:20',
             'flowerImg' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
         $flowers->flower_name = $request->flowerName;
-        $flowers->stock = $request->flowerStock;
         $flowers->flower_description = $request->desFlower;
         $flowers->category_id = $request->category;
         $flowers->flower_price = $request->flowerPrice;
 
         if ($request->hasFile('flowerImg')) {
             $filename = time() . Hash::make($request->file('flowerImg')->getClientOriginalName()) . '.' . $request->file('flowerImg')->extension();
-            $request->file('flowerImg')->storeAs('public/flower', $filename);
+            $request->file('flowerImg')->storeAs('flower', $filename, 'public');
             $flowers->flower_img = $filename;
         } else {
             $flowers->flower_img = $flowers->flower_img;

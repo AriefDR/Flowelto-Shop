@@ -53,18 +53,19 @@ class TransacationController extends Controller
     public function getHistory()
     {
         $category = Category::all();
-        $transactions = Transaction::where('user_id', Auth::user()->id)->paginate(9);
+        $transactions = Transaction::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(9);
         return view('transactionhistory', compact('category', 'transactions'));
     }
 
     public function getDetailHistory($id)
     {
+        $date = Auth::user()->transactions->where('id', $id)->first();
         $category = Category::all();
         $transactions = Auth::user()->transactions->where('id', $id);
         $transactions->transform(function ($transaction, $key) {
             $transaction->cart = unserialize($transaction->cart);
             return $transaction;
         });
-        return view('detailtransactionhistory', compact('transactions', 'category'));
+        return view('detailtransactionhistory', compact('transactions', 'category','date'));
     }
 }

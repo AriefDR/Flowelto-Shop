@@ -14,16 +14,16 @@
 @endif
 <div class="row">
 @foreach ($flowers as $flower)
-    <div class="col-lg-4" style="margin:10px 0;">
+    <div class="col-lg-3" style="margin:10px 0;">
         <div class="card-group">
-            <div class="card" style="height:36rem;">
+            <div class="card" style="height:30rem;">
                 <a href="{{url('/manager/flower/'.$flower->slug)}}">
-                <img class="card-img-top" src="{{asset('storage/flower/' . $flower->flower_img)}}" alt="Card image cap">
+                <img class="card-img-top" src="{{asset('storage/flower/' . $flower->flower_img)}}" alt="Card image cap" height="220">
                 </a>
-            <div class="card-body">
-                <h5 class="card-title">{{$flower->flower_name}}</h5>
-                <p class="card-text">{{substr($flower->flower_description,0,150)}}</p>
-            </div>
+                <div class="text-center mt-5">
+                    <h5 class="font-weight-bold" style="height: 60px; padding:5px; color:black">{{$flower->flower_name}}</h5>
+                    <p style="">Rp.{{$flower->flower_price}}</p>
+                </div>
             <div class="card-footer" style="background-color: white;">
                 <a href="{{url('/manager/flower/'.$flower->slug)}}"><button type="button" class="btn btn-outline-info">Details</button></a>
                 <a href="{{url('/manager/flower/'.$flower->id .'/edit')}}"><button type="button" class="btn btn-outline-warning">Edit</button></a>
@@ -38,4 +38,5 @@
     </div>
 @endforeach
 </div>
+{{$flowers->links()}}
 @endsection

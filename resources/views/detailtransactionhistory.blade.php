@@ -5,6 +5,7 @@
 @section('container')
 <br><br><br>
 <div class="container">
+    <h3 class="text-center">Transaction At {{$date->created_at}}</h3> <br>
     @foreach ($transactions as $transaction)
         <table class="table">
             <thead>

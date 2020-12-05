@@ -14,9 +14,9 @@
 @endif
 <div class="row">
 @foreach ($category as $ctg)
-    <div class="col-lg-4" style="margin:10px 0;">
-        <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{asset('/storage/category/' . $ctg->category_img)}}" alt="Card image cap">
+    <div class="col-lg-3" style="margin:10px 0;">
+        <div class="card">
+        <img class="card-img-top" src="{{asset('/storage/category/' . $ctg->category_img)}}" alt="Card image cap" height="290">
             <div class="card-body">
                 <h5 class="card-title">{{$ctg->category_name}}</h5>
             <a href="{{url('/manager/category/'. $ctg->id . '/edit')}}"><button type="button" class="btn btn-outline-warning">Edit</button></a>
