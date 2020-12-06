@@ -132,7 +132,7 @@ class FlowerController extends Controller
 
         $request->validate([
             'category' => 'required|numeric',
-            'flowerName' => 'sometimes|required|min:5|unique:flowers,flower_name',
+            'flowerName' => 'sometimes|required|min:5',
             'flowerPrice' => 'required|integer|min:50000',
             'desFlower' => 'required|min:20',
             'flowerImg' => 'image|mimes:jpeg,png,jpg|max:2048'

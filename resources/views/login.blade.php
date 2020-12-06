@@ -47,7 +47,7 @@
                         </div>
                         <div class="ml-1 pt-3 custom-control custom-checkbox mb-3">
                             <input type="checkbox" class="custom-control-input" id="customCheck1" name="remember">
-                            <label class="custom-control-label" for="customCheck1">Remember password</label>
+                            <label class="custom-control-label" for="customCheck1">Remember Me</label>
                         </div>
                         @csrf
                     </div>
@@ -62,7 +62,7 @@
 
 <script>
     function msgAlert() {
-        alert('Please Contact Your Manager to Reset Your Password');
+        alert('Please Contact Our Customer Service to Reset Your Password');
     }
 
 </script>
