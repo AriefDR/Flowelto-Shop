@@ -8,6 +8,11 @@ use App\User;
 
 class ManagerController extends Controller
 {
+    /**
+     * Fungsi ini akan menampilkan home manager
+     * Halaman ini khusus untuk manager dan terdapat dashboard simple
+     * Yang brisi data nya berisi jumlah Transaksi, Users, Flowers
+     */
     public function getHome()
     {
         $userCount = User::all()->count();

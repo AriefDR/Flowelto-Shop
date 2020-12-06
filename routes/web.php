@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'UserController@getHome')->name('home');
 
 Route::middleware('guest')->group(function () {
+    //autentikasi
     Route::get('/register', 'AuthController@getRegister')->name('register');
     Route::post('/register', 'AuthController@postRegister');
     Route::get('/login', 'AuthController@getLogin')->name('login');
@@ -29,7 +30,7 @@ Route::group(['middleware' => 'role:user'], function () {
     Route::get('/shopping-cart', 'CartController@getShoppingCart')->name('flower.shoppingCart');
     Route::get('/shopping-cart/{id}', 'CartController@updateCart')->name('update.flower.shoppingCart');
 
-    //storing data to database
+    //storing data TR to database
     Route::get('/checkout', 'TransacationController@getCheckout')->name('get.checkout');
     Route::post('/checkout', 'TransacationController@postCheckout')->name('post.checkout');
     Route::get('/transaction-history', 'TransacationController@getHistory')->name('get.history');

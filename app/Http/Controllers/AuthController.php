@@ -11,13 +11,21 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-
+    /**
+     * Fungsi ini akan menampilkan sebuah halaman login
+     * dan mempasing data ke login.blade.php berupa category
+     * dimana category ini digunakan pada navbar
+     */
     public function getLogin()
     {
         $category = Category::all();
         return view('login', compact('category'));
     }
-
+    /**
+     * Fungsi ini akan befungsi sebagai validasi login
+     * user harus mengikuti validasi di bawah ini
+     * jika validasi ini sesuai maka user dapat login
+     */
     public function postLogin(Request $request)
     {
         $request->validate([
@@ -30,13 +38,21 @@ class AuthController extends Controller
         }
         return redirect()->back()->withErrors('Email and Password doesnt match');
     }
-
+    /**
+     * Fungsi ini akan menampilkan sebuah halaman register
+     * dan mempasing data ke login.blade.php berupa category
+     * dimana category ini digunakan pada navbar
+     */
     public function getRegister()
     {
         $category = Category::all();
         return view('register', compact('category'));
     }
-
+    /**
+     * Fungsi ini akan befungsi sebagai validasi register
+     * user harus mengikuti validasi di bawah ini
+     * jika validasi ini sesuai maka user dapat mendaftar
+     */
     public function postRegister(Request $request)
     {
         $request->validate([
@@ -66,7 +82,11 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('success', 'Your Account has Been Created');
     }
-
+    /**
+     * Fungsi ini akan menampilkan halaman change password
+     * tampilannya sama tetapi tetapi beda file dan url
+     * tergantung dari user role tersebut
+     */
     public function getchangePassword()
     {
         if (Auth::user()->role == "manager")
@@ -76,7 +96,11 @@ class AuthController extends Controller
             return view('changepassword', compact('category'));
         }
     }
-
+    /**
+     * Fungsi ini akan befungsi sebagai validasi change password
+     * user harus mengikuti validasi di bawah ini
+     * jika validasi ini sesuai maka user dapat login
+     */
     public function postchangePassword(Request $request)
     {
         $request->validate([
@@ -97,7 +121,11 @@ class AuthController extends Controller
         else
             return redirect()->route('home')->with('success', 'Password Changed Successfuly');
     }
-
+    /**
+     * Fungsi ini akan befungsi sebagai logout
+     * fungsi ini akan menghapus session user
+     * setelah berhasil terhapus akan di arahkan ke login
+     */
     public function logout()
     {
         Auth::logout();

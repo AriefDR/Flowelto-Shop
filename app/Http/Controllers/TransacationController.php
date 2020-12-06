@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Session;
 
 class TransacationController extends Controller
 {
-
+    /**
+     * Fungsi ini akan menampilkan checkout
+     * User harus memiliki items di shopping chart
+     * Untuk melanjutkan ke halaman checkout
+     */
     public function getCheckout()
     {
         if (!Session::has('cart'))
@@ -22,6 +26,11 @@ class TransacationController extends Controller
         return view('checkout', compact('category', 'typePayments'));
     }
 
+    /**
+     * Fungsi ini akan memasukan data dari cart ke DB
+     * Semua data yang berada di Cart akan di pindahkan ke DB
+     * Jika data berhasil masuk ke DB maka Session cart akan di hapus
+     */
     public function postCheckout(Request $request)
     {
         $request->validate([
@@ -49,14 +58,22 @@ class TransacationController extends Controller
         Session::forget('cart');
         return redirect()->route('home')->with('success', 'Transaction is Successful');
     }
-
+    /**
+     * Fungsi ini akan menampilkan histori checkout
+     * Tampilan ini berisi table dengan waktu checkout
+     * Terdapat 1 halaman yang berisi 9 data menggunakan pagination
+     */
     public function getHistory()
     {
         $category = Category::all();
         $transactions = Transaction::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(9);
         return view('transactionhistory', compact('category', 'transactions'));
     }
-
+    /**
+     * Fungsi ini akan menampilkan detail checkout
+     * Sama seperti tampilan shopping cart
+     * Berisi items apa saja yang di beli oleh User
+     */
     public function getDetailHistory($id)
     {
         $date = Auth::user()->transactions->where('id', $id)->first();

@@ -10,12 +10,21 @@ use Illuminate\Support\Str;
 
 class CategoryFlowerController extends Controller
 {
+    /**
+     * Fungsi ini akan menampilkan halaman category
+     * Bagian ini hanya bisa di lihat oleh manager
+     * User tidak dapat mengakses halaman ini
+     */
     public function index()
     {
         $category = Category::all();
         return view('managerView.indexCategory', compact('category'));
     }
-
+    /**
+     * Fungsi ini akan befungsi sebagai search engine
+     * Search Engine ini hanya mencari category yang berada di DB
+     * Dan menampilkan 1 halam 8 item dengan menggunakan pagination
+     */
     public function searchCategory($asdas)
     {
         $category = Category::all();
@@ -24,12 +33,20 @@ class CategoryFlowerController extends Controller
         })->paginate(8);
         return view('search', compact('flowers', 'category'));
     }
-
+    /**
+     * Fungsi ini akan menampilkan halaman create category
+     * Tampilan ini berisi form yang harus di isi oleh manager
+     * Dan hanya dapat di akses oleh manager
+     */
     public function create()
     {
         return view('managerView.createCategory');
     }
-
+    /**
+     * Fungsi ini akan befungsi sebagai insert data ke dalam DB
+     * Terdapat beberapa validasi yang harus di sesuai
+     * Gambar akan di hash dan memasukan semua data category ke DB
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -50,13 +67,21 @@ class CategoryFlowerController extends Controller
         $category->save();
         return redirect()->route('category.index')->with('success', 'Success Input Data Category');
     }
-
+    /**
+     * Fungsi ini akan menampilkan edit category
+     * Tampilan ini akan beruba form yang berisi data dari DB
+     * Yang dapat di ubah sesuai keingin manager
+     */
     public function edit($id)
     {
         $category = Category::findOrFail($id);
         return view('managerView.editCategory', compact('category'));
     }
-
+    /**
+     * Fungsi ini akan befungsi sebagai update data category
+     * Terdapat beberapa validasi yang harus sesuai
+     * jika validasi berhasil maka data category akan terupdate
+     */
     public function update(Request $request, $id)
     {
         $category = Category::findOrFail($id);
@@ -77,7 +102,11 @@ class CategoryFlowerController extends Controller
         $category->update();
         return redirect()->route('category.index')->with('success', 'Success Update Data Category');
     }
-
+    /**
+     * Fungsi ini akan befungsi sebagai delete data category
+     * Hanya manager yang dapat melakukan fungsi ini
+     * Data akan terhapus dari DB untuk selamanya
+     */
     public function destroy($id)
     {
         $category = Category::findOrFail($id);

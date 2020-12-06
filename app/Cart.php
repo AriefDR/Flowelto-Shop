@@ -2,7 +2,11 @@
 
 namespace App;
 
-
+    /**
+     * Sebuah kelas Cart
+     * Yang di gunakan untuk menyimpan data
+     * Pada session / local storage
+     */
 class Cart
 {
     public $items = null;
@@ -17,7 +21,11 @@ class Cart
             $this->totalPrice = $oldCart->totalPrice;
         }
     }
-
+    /**
+     * Fungsi ini akan menyimpan data ke Session
+     * Jika items belum ada maka akan di buat array baru
+     * Jika items sudah ada maka akan di tambahkan ke array yang sudah ada
+     */
     public function add($item, $id, $qty)
     {
         $storeItem = ['qty' => 0, 'price' => $item->flower_price, 'item' => $item, 'img' => $item->flower_img];
@@ -33,7 +41,11 @@ class Cart
         $this->totalQty += $qty;
         $this->totalPrice += $item->flower_price * $qty;
     }
-
+    /**
+     * Fungsi ini akan mengupdate cart
+     * Jika items qty yang di input user 0 maka akan di delete
+     * Jika items qty tidak 0 maka akan di tambahkan qty baru ke qty lama
+     */
     public function update($item, $id, $qty)
     {
         if ($qty > 0) {

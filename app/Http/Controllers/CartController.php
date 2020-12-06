@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Flower;
 use App\Category;
-use App\Transaction;
-use App\TypePayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
+    /**
+     * Fungsi ini menampilkan halaman shopping cart
+     * ketika shooping cart tidak null
+     * maka akan menampilkan isi shopping cart
+     */
     public function getShoppingCart()
     {
         $category = Category::all();
@@ -25,7 +28,11 @@ class CartController extends Controller
             'category' => $category
         ]);
     }
-
+    /**
+     * Fungsi ini berfungsi sebagai add to cart
+     * tedapat beberapa validasi yang tehubung ke model cart
+     * ketika berhasil maka fungsi ini akan membuat session cart
+     */
     public function addToCart(Request $request, $id)
     {
         $request->validate([
@@ -41,7 +48,11 @@ class CartController extends Controller
         $request->session()->put('cart', $cart);
         return redirect()->back()->with('success', 'item added to cart');
     }
-
+    /**
+     * Fungsi ini akan befungsi sebagai update cart
+     * terdapat validasi yang harus di ikuti
+     * jika berhasil maka cart akan di update
+     */
     public function updateCart(Request $request, $id)
     {
         $request->validate([
