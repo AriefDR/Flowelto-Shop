@@ -68,6 +68,6 @@ class CartController extends Controller
             $request->session()->put('cart', $cart);
         else
             Session::forget('cart');
-        return redirect()->back();
+        return redirect()->route('flower.shoppingCart');
     }
 }

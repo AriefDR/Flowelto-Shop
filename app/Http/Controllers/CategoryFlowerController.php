@@ -17,7 +17,7 @@ class CategoryFlowerController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
+        $category = Category::paginate(8);
         return view('managerView.indexCategory', compact('category'));
     }
     /**
@@ -111,6 +111,6 @@ class CategoryFlowerController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect()->back()->with('success', 'Category has been Delete');
+        return redirect()->route('category.index')->with('success', 'Category has been Delete');
     }
 }

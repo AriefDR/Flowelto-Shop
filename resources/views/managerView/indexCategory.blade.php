@@ -30,4 +30,5 @@
     </div>
 @endforeach
 </div>
+{{$category->links()}}
 @endsection

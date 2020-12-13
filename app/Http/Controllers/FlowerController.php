@@ -164,6 +164,6 @@ class FlowerController extends Controller
         $flowers = Flower::findOrFail($id);
         $flowers->delete();
 
-        return redirect()->back()->with('success', 'Flower has been Delete');
+        return redirect()->route('flower.index')->with('success', 'Flower has been Delete');
     }
 }

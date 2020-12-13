@@ -4,7 +4,7 @@
 
 @section('container')
 <br><br><br>
-    <div class="container">
+    <div class="container auth"> <br>
         <h4 class="text-center">REGISTER</h4>
         @if (!$errors)
             <h4>data berhasil masuk</h4>

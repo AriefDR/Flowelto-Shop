@@ -89,6 +89,12 @@
             .img-hover-zoom:hover img {
                 transform: scale(1.5);
             }
+            .auth {
+            margin-top: 33px;
+            width: 30rem;
+            padding-bottom: 30px;
+            box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+        }
         </style>
     </head>
     <body>
@@ -134,7 +140,7 @@
                 </li>
                 @else
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white"  id="drProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{strtoupper(Auth::user()->role)}}</a>
+                <a class="nav-link dropdown-toggle text-white"  id="drProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{strtoupper(Auth::user()->username)}}</a>
                     <div class="dropdown-menu" aria-labelledby="drProfile">
                         <a class="dropdown-item" href="{{route('flower.shoppingCart')}}">MyCart <span class="badge badge-info">{{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}</span> </a>
                         <div class="dropdown-divider"></div>

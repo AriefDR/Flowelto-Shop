@@ -5,7 +5,8 @@
 @section('container')
 
 <br><br><br>
-<div class="container">
+<div class="container auth">
+    <br>
     <h4 class="text-center">LOGIN</h4>
     <hr>
     @if($errors->any())
@@ -24,8 +25,8 @@
     </div>
     @endif
     <div class="container">
-        <div class="row justify-content-lg-center">
-            <div class="col col-lg-8">
+        <div class="row">
+            <div class="col col-lg-12">
                 <form action="{{route('login')}}" method="POST">
                     <div class="form-group">
                         <label>Email</label>

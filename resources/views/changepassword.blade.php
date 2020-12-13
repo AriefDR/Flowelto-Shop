@@ -5,7 +5,7 @@
 @section('container')
 
 <br><br><br>
-    <div class="container">
+    <div class="container auth" style="margin-bottom: 91px"> <br>
         <h4 class="text-center text-uppercase" style="letter-spacing: 3px;">Change Password</h4>
         <hr>
         @if($errors->any())
@@ -18,7 +18,7 @@
         @endif
         <div class="container">
             <div class="row justify-content-lg-center">
-                <div class="col col-lg-8">
+                <div class="col col-lg-10">
                     <form action="{{route('change.password')}}" method="POST">
                         <div class="form-group">
                             <label>Current Password</label>
@@ -40,5 +40,4 @@
             </div>
         </div>
     </div>
-
 @endsection

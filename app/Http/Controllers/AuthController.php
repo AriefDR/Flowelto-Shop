@@ -36,7 +36,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             return redirect()->intended('/manager/home');
         }
-        return redirect()->back()->withErrors('Email and Password doesnt match');
+        return redirect()->route('login')->withErrors('Email and Password doesnt match');
     }
     /**
      * Fungsi ini akan menampilkan sebuah halaman register
